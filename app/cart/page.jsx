@@ -20,6 +20,7 @@ export async function generateMetadata() {
 }
 
 const page = () => {
+  
   const randomReviewCount = Math.floor(Math.random() * (999 - 700 + 1)) + 700;
   return (
     <>
