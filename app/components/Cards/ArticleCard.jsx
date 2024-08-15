@@ -40,7 +40,7 @@ const ArticleCard = ({ examData }) => {
                 </div>
                 <div class="w-auto px-2">
                   <h4 class="txl-base md:2ext-lg font-bold text-gray-700">
-                    Hussnain
+                    Tech Professionals
                   </h4>
                   <p class="text-base md:text-lg text-gray-500">21 May 2024</p>
                 </div>
