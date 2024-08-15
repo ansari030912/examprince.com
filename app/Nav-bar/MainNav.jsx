@@ -757,7 +757,7 @@ const MainNav = () => {
                   <li>
                     <Link
                       className="p-3 py-4 flex items-center justify-between text-gray-700 hover:text-green-500 hover:bg-gray-100 rounded-md"
-                      href="#"
+                      href="/refund-policy"
                       onClick={closeNav}
                     >
                       <div className="flex items-center">
@@ -775,7 +775,7 @@ const MainNav = () => {
                           ></path>
                         </svg>
                         <p className="text-gray-700 font-medium text-base">
-                          Customer Support
+                          Privacy Policy
                         </p>
                       </div>
                     </Link>
@@ -784,7 +784,7 @@ const MainNav = () => {
                   <li>
                     <Link
                       className="p-3 py-4 flex items-center justify-between text-gray-700 hover:text-green-500 hover:bg-gray-100 rounded-md"
-                      href="#"
+                      href="/refund-policy"
                       onClick={closeNav}
                     >
                       <div className="flex items-center">
@@ -806,10 +806,10 @@ const MainNav = () => {
                       </div>
                     </Link>
                   </li>
-                  {/* <li>
+                  <li>
                     <Link
                       className="p-3 py-4 flex items-center justify-between text-gray-700 hover:text-green-500 hover:bg-gray-100 rounded-md"
-                      href="#"
+                      href="/about"
                       onClick={closeNav}
                     >
                       <div className="flex items-center">
@@ -818,19 +818,82 @@ const MainNav = () => {
                           className="mr-2"
                           width="24"
                           height="24"
-                          viewBox="0 0 2048 2048"
+                          viewBox="0 0 24 24"
                         >
                           <path
                             fill="currentColor"
-                            d="M453 512q110-123 258-189t313-67q32 0 64 3t64 8v130q-32-6-64-9t-64-4q-104 0-200 33t-180 95zm1198 640q6-32 9-64t4-64q0-32-3-64t-10-64h130q5 32 8 64t3 64t-3 64t-8 64zM515 1408q45 60 102 107t122 81t138 50t147 18q32 0 64-3t64-10v130q-32 5-64 8t-64 3q-103 0-200-26t-183-77t-158-121t-123-160zM2048 128v640h-768V128zm-128 128h-512v384h512zm-640 1024h768v640h-768zm128 512h512v-384h-512zm-640-512H0V640h768zM640 768H128v384h512z"
+                            d="M11 9h2V7h-2m1 13c-4.41 0-8-3.59-8-8s3.59-8 8-8s8 3.59 8 8s-3.59 8-8 8m0-18A10 10 0 0 0 2 12a10 10 0 0 0 10 10a10 10 0 0 0 10-10A10 10 0 0 0 12 2m-1 15h2v-6h-2z"
                           />
                         </svg>
                         <p className="text-gray-700 font-medium text-base">
-                          Test Engine
+                          About Us
                         </p>
                       </div>
                     </Link>
-                  </li> */}
+                  </li>
+                  <li>
+                    <Link
+                      className="p-3 py-4 flex items-center justify-between text-gray-700 hover:text-green-500 hover:bg-gray-100 rounded-md"
+                      href="/terms-and-conditions"
+                      onClick={closeNav}
+                    >
+                      <div className="flex items-center">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="mr-2"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                        >
+                          <circle cx="7" cy="2" r="1" fill="currentColor" />
+                          <circle cx="3" cy="6" r="1" fill="currentColor" />
+                          <circle cx="12" cy="1" r="1" fill="currentColor" />
+                          <circle cx="17" cy="2" r="1" fill="currentColor" />
+                          <circle cx="21" cy="6" r="1" fill="currentColor" />
+                          <path
+                            fill="currentColor"
+                            d="m17.5 24l-.119-.029A8.62 8.62 0 0 1 11 15.916v-4.218L17.5 9l6.5 2.698v4.218a8.62 8.62 0 0 1-6.381 8.055ZM13 12.865v3.15a6.4 6.4 0 0 0 4.5 5.96a6.4 6.4 0 0 0 4.5-5.96v-3.15l-4.5-1.793Zm10-.503"
+                          />
+                          <circle cx="12" cy="23" r="1" fill="currentColor" />
+                          <path
+                            fill="currentColor"
+                            d="M10.4 10.4a.8.8 0 0 0 .8-.8V8h1.6a1.6 1.6 0 0 0 1.59-1.5a6 6 0 0 1 2.353 1.857L18 7.833l1.08.45a7.997 7.997 0 1 0-8.39 11.6a9.6 9.6 0 0 1-.59-2.201a5.96 5.96 0 0 1-3.995-6.777L9.6 14.4v.8a1.6 1.6 0 0 0 .4 1.045V12H8.8v-1.6Z"
+                          />
+                          <circle cx="3" cy="18" r="1" fill="currentColor" />
+                          <circle cx="7" cy="22" r="1" fill="currentColor" />
+                          <circle cx="1" cy="12" r="1" fill="currentColor" />
+                        </svg>
+                        <p className="text-gray-700 font-medium text-base">
+                          Terms & Conditions
+                        </p>
+                      </div>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      className="p-3 py-4 flex items-center justify-between text-gray-700 hover:text-green-500 hover:bg-gray-100 rounded-md"
+                      href="/faq"
+                      onClick={closeNav}
+                    >
+                      <div className="flex items-center">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="mr-2"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            fill="currentColor"
+                            d="M18 15H6l-4 4V3a1 1 0 0 1 1-1h15a1 1 0 0 1 1 1v11a1 1 0 0 1-1 1m5-6v14l-4-4H8a1 1 0 0 1-1-1v-1h14V8h1a1 1 0 0 1 1 1M8.19 4c-.87 0-1.57.2-2.11.59c-.52.41-.78.98-.77 1.77l.01.03h1.93c.01-.3.1-.53.28-.69a1 1 0 0 1 .66-.23c.31 0 .57.1.75.28c.18.19.26.45.26.75c0 .32-.07.59-.23.82c-.14.23-.35.43-.61.59c-.51.34-.86.64-1.05.91C7.11 9.08 7 9.5 7 10h2c0-.31.04-.56.13-.74s.26-.36.51-.52c.45-.24.82-.53 1.11-.93s.44-.81.44-1.31c0-.76-.27-1.37-.81-1.82C9.85 4.23 9.12 4 8.19 4M7 11v2h2v-2zm6 2h2v-2h-2zm0-9v6h2V4z"
+                          />
+                        </svg>
+                        <p className="text-gray-700 font-medium text-base">
+                          Frequently Asked Questions
+                        </p>
+                      </div>
+                    </Link>
+                  </li>
                 </ul>
 
                 <div>
@@ -948,7 +1011,10 @@ const MainNav = () => {
                         <li>
                           <span className="p-3 py-4 flex items-center justify-between text-gray-700 hover:text-green-500 hover:bg-gray-100 rounded-md">
                             <button
-                              onClick={(handleSignOut, closeNav)}
+                              onClick={() => {
+                                handleSignOut();
+                                closeNav();
+                              }}
                               className="flex items-center"
                             >
                               <svg

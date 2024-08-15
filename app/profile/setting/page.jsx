@@ -16,12 +16,12 @@ const SettingChangeForm = () => {
   const [openSnackbar, setOpenSnackbar] = useState(false);
   const [apiResponse, setApiResponse] = useState({});
   const [user, setUser] = useState({});
-  const router = useRouter();
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
     setErrors({ ...errors, [e.target.name]: "" });
   };
+
   useEffect(() => {
     const loginResponse = JSON.parse(localStorage.getItem("loginResponse"));
     setUser(loginResponse);
@@ -43,26 +43,24 @@ const SettingChangeForm = () => {
       return;
     }
 
-    const loginResponse = JSON.parse(localStorage.getItem("loginResponse"));
     try {
       const response = await axios.post(
         `${Base_URL}/v1/account/update-profile`,
         {
-          name: formData.name,
+          name: user?.name,
           password: formData.password,
         },
         {
           headers: {
             "x-api-key": X_API_Key,
-            Authorization: `Bearer ${loginResponse._token}`,
+            Authorization: `Bearer ${user._token}`,
           },
         }
       );
       setApiResponse(response.data);
       // Reset form data
-      setFormData({ name: "", password: "", confirmPassword: "" });
+      setFormData({ name: user?.name, password: "", confirmPassword: "" });
       setOpenSnackbar(true);
-      router.push("/");
     } catch (error) {
       console.error("Error:", error);
       alert("Something went wrong. Please try again later.");
@@ -70,79 +68,92 @@ const SettingChangeForm = () => {
   };
 
   return (
-    <>
-      <Card sx={{ borderRadius: "10px", padding: "15px" }}>
-        <Typography variant="h5" fontWeight={600}>
-          Setting - Update Password
-        </Typography>
-      </Card>
-      <form onSubmit={handleSubmit} className="lg:mt-12">
-        <div className="flex ">
-          <div className="flex flex-row w-full">
-            <div className="flex flex-1 justify-center px-4 relative">
-              <div className="flex flex-1 flex-col  justify-center space-y-5 max-w-md">
-                <Box
-                  sx={{
-                    boxShadow: "inset 0px 0px 8px rgba(0, 0, 0, 0.2)",
-                    padding: "15px",
-                    borderRadius: "10px",
-                    bgcolor: "white",
-                  }}
-                >
-                  <div className="flex flex-col max-w-md space-y-5">
-                    <input
-                      type="name"
-                      placeholder="Name"
-                      className="flex px-3 py-2 md:px-4 md:py-3 text-sm border-2 border-black rounded-lg font-medium placeholder:font-normal"
-                      name="name"
-                      disabled
-                      value={user?.name}
-                      onChange={handleChange}
-                    />
-                    {errors.name && (
-                      <span style={{ color: "red" }} className="text-sm">
-                        {errors.name}
-                      </span>
-                    )}
-                    <input
-                      type="password"
-                      placeholder="Password"
-                      className="flex px-3 py-2 md:px-4 md:py-3 text-sm border-2 border-black rounded-lg font-medium placeholder:font-normal"
-                      name="password"
-                      value={formData.password}
-                      onChange={handleChange}
-                    />
-                    {errors.password && (
-                      <span style={{ color: "red" }} className="text-sm">
-                        {errors.password}
-                      </span>
-                    )}
-                    <input
-                      type="password"
-                      placeholder="Confirm Password"
-                      className="flex px-3 py-2 md:px-4 md:py-3 text-sm border-2 border-black rounded-lg font-medium placeholder:font-normal"
-                      name="confirmPassword"
-                      value={formData.confirmPassword}
-                      onChange={handleChange}
-                    />
-                    {errors.confirmPassword && (
-                      <span style={{ color: "red" }} className="text-sm">
-                        {errors.confirmPassword}
-                      </span>
-                    )}
-                    <button
-                      type="submit"
-                      className="flex items-center justify-center text-sm flex-none px-3 py-2 md:px-4 md:py-3 border-2 rounded-lg font-medium border-blue-600 bg-blue-500 text-white"
-                    >
-                      Update Profile
-                    </button>
-                  </div>
-                </Box>
-              </div>
-            </div>
+    <section
+      className="py-24 md:py-32 bg-white"
+      style={{
+        backgroundImage: `url('/pattern-white.png')`,
+      }}
+    >
+      <div className="container px-4 mx-auto">
+        <div className="max-w-sm mx-auto">
+          <div className="mb-6 text-center">
+            <h3 className="mb-4 text-2xl md:text-3xl font-bold">
+              Setting - Update Password
+            </h3>
+            <p className="text-lg text-coolGray-500 font-medium">
+              Ensure your account is secure
+            </p>
           </div>
+          <form onSubmit={handleSubmit}>
+            <div className="mb-6">
+              <label className="block mb-2 font-medium">Name*</label>
+              <input
+                className="appearance-none block w-full p-3 leading-5 border border-coolGray-200 rounded-lg shadow-md placeholder-coolGray-400 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50"
+                type="name"
+                placeholder="Name"
+                name="name"
+                disabled
+                value={user?.name}
+                onChange={handleChange}
+              />
+              {errors.name && (
+                <span style={{ color: "red" }} className="text-sm">
+                  {errors.name}
+                </span>
+              )}
+            </div>
+            <div className="mb-6">
+              <label className="block mb-2 font-medium">Password*</label>
+              <input
+                className="appearance-none block w-full p-3 leading-5 border border-coolGray-200 rounded-lg shadow-md placeholder-coolGray-400 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50"
+                type="password"
+                placeholder="Password"
+                name="password"
+                value={formData.password}
+                onChange={handleChange}
+              />
+              {errors.password && (
+                <span style={{ color: "red" }} className="text-sm">
+                  {errors.password}
+                </span>
+              )}
+            </div>
+            <div className="mb-6">
+              <label className="block mb-2 font-medium">
+                Confirm Password*
+              </label>
+              <input
+                className="appearance-none block w-full p-3 leading-5 border border-coolGray-200 rounded-lg shadow-md placeholder-coolGray-400 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50"
+                type="password"
+                placeholder="Confirm Password"
+                name="confirmPassword"
+                value={formData.confirmPassword}
+                onChange={handleChange}
+              />
+              {errors.confirmPassword && (
+                <span style={{ color: "red" }} className="text-sm">
+                  {errors.confirmPassword}
+                </span>
+              )}
+            </div>
+            <button
+              className="inline-block py-3 px-7 mb-4 w-full text-base text-green-50 font-medium text-center leading-6 bg-green-500 hover:bg-green-600 focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 rounded-md shadow-sm"
+              type="submit"
+            >
+              Update Password
+            </button>
+            {/* <p className="text-center">
+              <span className="text-xs font-medium">Changed your mind?</span>{" "}
+              <button
+                className="inline-block text-xs font-medium text-green-500 hover:text-green-600 hover:underline"
+                onClick={() => router.push("/")}
+              >
+                Go back
+              </button>
+            </p> */}
+          </form>
         </div>
-      </form>
+      </div>
       <Snackbar
         open={openSnackbar}
         autoHideDuration={6000}
@@ -154,14 +165,14 @@ const SettingChangeForm = () => {
       >
         <Alert
           onClose={() => setOpenSnackbar(false)}
-          severity={apiResponse?.is_active ? "success" : "error"}
+          severity={apiResponse ? "success" : "error"}
           variant="filled"
           sx={{ width: "100%" }}
         >
-          {apiResponse && apiResponse.message}
+          {apiResponse && "Password Update Successfuly!"}
         </Alert>
       </Snackbar>
-    </>
+    </section>
   );
 };
 
