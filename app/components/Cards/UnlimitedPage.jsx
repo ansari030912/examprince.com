@@ -1,5 +1,6 @@
 "use client";
-import { Icon, Snackbar, SnackbarContent } from "@mui/material";
+import { Icon } from "@iconify/react";
+import { Snackbar, SnackbarContent } from "@mui/material";
 import React, { useState } from "react";
 
 const UnlimitedPage = ({ data }) => {
