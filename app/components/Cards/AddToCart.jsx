@@ -97,9 +97,8 @@ const AddToCart = ({ examData }) => {
           <Grid item xs={12} md={5}>
             <div className="lg:pr-5 pt-1 pb-7">
               <Button
-               sx={{bgcolor:"red"}}
                 onClick={handleDialogOpen}
-                className="rounded-full hover:bg-red-600 focus:ring-4 focus:ring-gray-200 text-white font-semibold h-10 w-full px-7 py-4 flex items-center justify-center gap-2 transition duration-200"
+                className="bg-red-600 rounded-full hover:bg-red-800 focus:ring-4 focus:ring-gray-200 text-white font-semibold h-10 w-full px-7 py-4 flex items-center justify-center gap-2 transition duration-200"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
