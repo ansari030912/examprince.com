@@ -43,11 +43,13 @@ const HotExamCards = ({ data }) => {
               <div>
                 <p className="text-base flex justify-between text-gray-800 font-bold mb-2">
                   <span>{vendor_title}</span>
-                  <span className="text-green-500 font-semibold">{exam_code}</span>
+                  <span className="text-green-500 font-semibold">
+                    {exam_code}
+                  </span>
                 </p>
                 <hr className="mt-2" />
                 <span className="block text-sm text-gray-600 font-bold mt-3 mb-6">
-                  {exam_title}
+                  {exam_code} - {exam_title}
                 </span>
               </div>
               <div className="flex justify-center mb-1">

@@ -59,7 +59,7 @@ const FooterBar = () => {
                   class="inline-block text-coolGray-500 hover:text-coolGray-600 font-medium"
                   href="#"
                 >
-                  Privaacy Policy
+                  Privacy Policy
                 </a>
               </div>
               <div class="w-auto p-3 md:py-0 md:px-6">
