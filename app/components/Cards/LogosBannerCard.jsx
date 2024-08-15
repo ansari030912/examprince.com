@@ -41,6 +41,16 @@ const LogosBannerCard = () => {
             </div>
           </div>
           <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/6 px-4 mb-6 lg:mb-0 ">
+            <div class="py-11 px-2 rounded-md shadow-2xl bg-white">
+              <img
+                class="mx-auto"
+                src="/logo/microsoft.png"
+                width={"130px"}
+                alt=""
+              />
+            </div>
+          </div>
+          <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/6 px-4 mb-6 lg:mb-0 ">
             <div class="p-3 rounded-md shadow-2xl bg-white">
               <img class="mx-auto" src="/logo/pmi.png" width={"100px"} alt="" />
             </div>
@@ -51,16 +61,6 @@ const LogosBannerCard = () => {
                 class="mx-auto"
                 src="/logo/cisco.png"
                 width={"115px"}
-                alt=""
-              />
-            </div>
-          </div>
-          <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/6 px-4 mb-6 lg:mb-0 ">
-            <div class="py-11 px-2 rounded-md shadow-2xl bg-white">
-              <img
-                class="mx-auto"
-                src="/logo/microsoft.png"
-                width={"130px"}
                 alt=""
               />
             </div>

@@ -234,7 +234,7 @@ const MainNav = () => {
                     </Link>
                   </li>
                   <li className="relative group mr-5">
-                    <Link href={"#"}>
+                    <Link href={"/unlimited-access"}>
                       <span className="flex items-center py-6 text-sm font-medium text-gray-700 hover:text-green-500 border-b-2 border-transparent hover:border-green-500 cursor-pointer">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -726,7 +726,7 @@ const MainNav = () => {
                   <li>
                     <Link
                       className="p-3 py-4 flex items-center justify-between text-gray-700 hover:text-green-500 hover:bg-gray-100 rounded-md"
-                      href="#"
+                      href="/unlimited-access"
                       onClick={closeNav}
                     >
                       <div className="flex items-center">

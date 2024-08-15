@@ -47,12 +47,12 @@ const FooterBar = () => {
                 </Link>
               </div>
               <div class="w-auto p-3 md:px-6 py-2">
-                <a
+                <Link
                   class="inline-block text-coolGray-500 hover:text-coolGray-600 font-medium"
-                  href="#"
+                  href="/unlimited-access"
                 >
                   Unlimited Access
-                </a>
+                </Link>
               </div>
               <div class="w-auto p-3 md:px-6 py-2">
                 <Link
@@ -115,7 +115,6 @@ const FooterBar = () => {
           </div>
           <div class="w-full md:w-1/2">
             <div class="flex flex-wrap md:justify-end -mx-5">
-              
               <div class="px-5 flex">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
