@@ -28,7 +28,7 @@ const AddToCart = ({ examData }) => {
   const [off, setOff] = useState("0");
   const [snackbarOpen, setSnackbarOpen] = useState(false);
   const [cartPlan, setCartPlan] = useState({});
-  const [dialogOpen, setDialogOpen] = useState(true);
+  const [dialogOpen, setDialogOpen] = useState(false);
   const [email, setEmail] = useState("");
   const [showDownloadButtons, setShowDownloadButtons] = useState(false);
   const [emailError, setEmailError] = useState("");
