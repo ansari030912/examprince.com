@@ -572,12 +572,26 @@ const AddToCart = ({ examData }) => {
             </Button>
           ) : (
             <>
-              <Button className="bg-purple-600 rounded-full hover:bg-purple-800 focus:ring-4 -mt-6 focus:ring-gray-200 text-white font-semibold h-10 w-full px-7 py-4 flex items-center justify-center gap-2 transition duration-200">
-                Download PDF
-              </Button>
-              <Button className="bg-purple-600 rounded-full hover:bg-purple-800 focus:ring-4 mt-4 mr-2 focus:ring-gray-200 text-white font-semibold h-10 w-full px-7 py-4 flex items-center justify-center gap-2 transition duration-200">
-                Download Test Engine
-              </Button>
+              <Link
+                className="w-full"
+                href={
+                  "https://dumpsarena.com/demo-dl-pdf/826e4fcad0984eeda11dc92ed2639ec9"
+                }
+              >
+                <Button className="bg-purple-600 rounded-full hover:bg-purple-800 focus:ring-4 -mt-6 focus:ring-gray-200 text-white font-semibold h-10 w-full px-7 py-4 flex items-center justify-center gap-2 transition duration-200">
+                  Download PDF
+                </Button>
+              </Link>
+              <Link
+                className="w-full"
+                href={
+                  "https://dumpsarena.com/demo-dl-engine/826e4fcad0984eeda11dc92ed2639ec9"
+                }
+              >
+                <Button className="bg-purple-600 rounded-full hover:bg-purple-800 focus:ring-4 mt-4 mr-2 focus:ring-gray-200 text-white font-semibold h-10 w-full px-7 py-4 flex items-center justify-center gap-2 transition duration-200">
+                  Download Test Engine
+                </Button>
+              </Link>
             </>
           )}
         </DialogActions>
