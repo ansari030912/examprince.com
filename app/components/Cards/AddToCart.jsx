@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 import { Icon } from "@iconify/react";
 import {
@@ -8,6 +9,14 @@ import {
   Snackbar,
   SnackbarContent,
   Typography,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
+  Button,
+  TextField,
+  IconButton,
+  Divider,
 } from "@mui/material";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -19,7 +28,34 @@ const AddToCart = ({ examData }) => {
   const [off, setOff] = useState("0");
   const [snackbarOpen, setSnackbarOpen] = useState(false);
   const [cartPlan, setCartPlan] = useState({});
+  const [dialogOpen, setDialogOpen] = useState(true);
+  const [email, setEmail] = useState("");
+  const [showDownloadButtons, setShowDownloadButtons] = useState(false);
+  const [emailError, setEmailError] = useState("");
 
+  const handleDialogClose = () => {
+    setDialogOpen(false);
+    setEmail("");
+    setEmailError("");
+    setShowDownloadButtons(false);
+  };
+
+  const handleGetDemoDownloads = () => {
+    if (!email) {
+      setEmailError("Email is required");
+      return;
+    }
+
+    // Basic email pattern matching
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailPattern.test(email)) {
+      setEmailError("Please enter a valid email address");
+      return;
+    }
+    setEmail("");
+    setEmailError("");
+    setShowDownloadButtons(true);
+  };
   const handleBoxClick = (item) => {
     const cartData = {
       cart: item.cart,
@@ -32,6 +68,10 @@ const AddToCart = ({ examData }) => {
 
   const handleCloseSnackbar = () => {
     setSnackbarOpen(false);
+  };
+
+  const handleDialogOpen = () => {
+    setDialogOpen(true);
   };
 
   useEffect(() => {
@@ -52,30 +92,30 @@ const AddToCart = ({ examData }) => {
 
   return (
     <>
-      <div class="w-full lg:w-12/12 p-4 ">
+      <div className="w-full lg:w-12/12 p-4 ">
         <Grid container spacing={2}>
           <Grid item xs={12} md={5}>
             <div className="lg:pr-5 pt-1 pb-7">
-              <Link
-                href="https://dumpsarena.com/demo-dl-pdf/b4c987ceb5d044d3a150b3c4f217d70e"
-                class="bg-purple-600 rounded-full hover:bg-purple-800 focus:ring-4 focus:ring-gray-200 text-white font-semibold h-10 w-full px-7 py-4 flex items-center justify-center gap-2 transition duration-200"
+              <Button
+                onClick={handleDialogOpen}
+                className="bg-red-600 rounded-full hover:bg-red-800 focus:ring-4 focus:ring-gray-200 text-white font-semibold h-10 w-full px-7 py-4 flex items-center justify-center gap-2 transition duration-200"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  width="1em"
-                  height="1em"
+                  width="2em"
+                  height="2em"
                   viewBox="0 0 24 24"
                 >
                   <g
                     stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
                   >
                     <path
                       fill="none"
-                      stroke-dasharray="14"
-                      stroke-dashoffset="14"
+                      strokeDasharray="14"
+                      strokeDashoffset="14"
                       d="M6 19h12"
                     >
                       <animate
@@ -100,11 +140,13 @@ const AddToCart = ({ examData }) => {
                     </path>
                   </g>
                 </svg>
-                <span style={{ fontSize: "16px" }}>Download PDF Demo</span>
-              </Link>
+                <span style={{ fontSize: "16px" }}>Download Demo</span>
+              </Button>
             </div>
             <div className="lg:ml-2 lg:mr-8 mb-4 w-95 border-t-2"></div>
-            <p class="text-xl font-bold text-gray-700 mb-4">Select Product</p>
+            <p className="text-xl font-bold text-gray-700 mb-4">
+              Select Product
+            </p>
             <Grid
               container
               spacing={2}
@@ -229,7 +271,7 @@ const AddToCart = ({ examData }) => {
           </Grid>
           <Grid item xs={12} md={7}>
             <div>
-              <p class="text-xl mb-4 font-bold text-blue-600">
+              <p className="text-xl mb-4 font-bold text-blue-600">
                 {examData?.exam_vendor_title}
               </p>
               <Grid container spacing={2} sx={{ mb: "10px" }}>
@@ -328,7 +370,7 @@ const AddToCart = ({ examData }) => {
             )}
             <hr style={{ border: "1px solid #F5F6FA", marginBottom: "20px" }} />
             <div>
-              <span class="font-heading text-lg my-4 pl-4 text-gray-600 font-semibold flex justify-between items-center">
+              <span className="font-heading text-lg my-4 pl-4 text-gray-600 font-semibold flex justify-between items-center">
                 Actual Amount :{" "}
                 <span
                   style={{
@@ -354,12 +396,12 @@ const AddToCart = ({ examData }) => {
                 </span>
               </span>
               <hr style={{ border: "1px solid #F5F6FA" }} />
-              <span class="font-heading text-lg my-4 pl-4 flex text-gray-600 font-semibold justify-between items-center">
+              <span className="font-heading text-lg my-4 pl-4 flex text-gray-600 font-semibold justify-between items-center">
                 <span>Discount :</span>
                 <span className="text-green-600">{off}%</span>
               </span>
               <hr style={{ border: "1px solid #F5F6FA" }} />
-              <span class="font-heading text-lg my-4 pl-4 flex text-gray-600 font-semibold justify-between items-center">
+              <span className="font-heading text-lg my-4 pl-4 flex text-gray-600 font-semibold justify-between items-center">
                 Total Amount :
                 <span className="text-green-600 text-2xl">${price}</span>
               </span>
@@ -368,13 +410,13 @@ const AddToCart = ({ examData }) => {
               />
               <button
                 onClick={() => handleBoxClick(cartPlan)}
-                class="bg-green-600 rounded-full hover:bg-green-700 text-white font-semibold h-10 w-full px-7 py-4 flex items-center justify-center gap-2 transition duration-200"
+                className="bg-green-600 rounded-full hover:bg-green-700 text-white font-semibold h-10 w-full px-7 py-4 flex items-center justify-center gap-2 transition duration-200"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="25"
                   height="24"
-                  viewbox="0 0 25 24"
+                  viewBox="0 0 25 24"
                   fill="none"
                 >
                   <path
@@ -388,6 +430,176 @@ const AddToCart = ({ examData }) => {
           </Grid>
         </Grid>
       </div>
+
+      {/* Dialog for Download PDF Demo */}
+      <Dialog
+        open={dialogOpen}
+        onClose={handleDialogClose}
+        maxWidth="sm"
+        fullWidth
+      >
+        <DialogTitle>
+          <Box
+            display="flex"
+            justifyContent="space-between"
+            alignItems="center"
+          >
+            <Typography variant="h6" component="div" color="purple">
+              First Try Then Buy!
+            </Typography>
+            <IconButton onClick={handleDialogClose}>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="1em"
+                height="1em"
+                viewBox="0 0 32 32"
+              >
+                <path
+                  fill="currentColor"
+                  d="M16 2C8.2 2 2 8.2 2 16s6.2 14 14 14s14-6.2 14-14S23.8 2 16 2m0 26C9.4 28 4 22.6 4 16S9.4 4 16 4s12 5.4 12 12s-5.4 12-12 12"
+                />
+                <path
+                  fill="currentColor"
+                  d="M21.4 23L16 17.6L10.6 23L9 21.4l5.4-5.4L9 10.6L10.6 9l5.4 5.4L21.4 9l1.6 1.6l-5.4 5.4l5.4 5.4z"
+                />
+              </svg>
+            </IconButton>
+          </Box>
+        </DialogTitle>
+        <Divider />
+        <DialogContent>
+          <div className="lg:hidden flex justify-center">
+            <img
+              className="lg:hidden"
+              src="/package-small-min_optimized.png" // Replace with actual image URL or import
+              alt="Product"
+              style={{ maxWidth: "170px", marginRight: "20px" }}
+            />
+          </div>
+          <Box
+            display="flex"
+            justifyContent="space-between"
+            alignItems="flex-start"
+          >
+            <ul style={{ listStyleType: "none", padding: 0 }}>
+              <li>✔ Complimentary Regular Updates</li>
+              <li>✔ Validated by Certified IT Professionals</li>
+              <li>✔ Immediate Access to Downloads</li>
+              <li>✔ Current and Comprehensive Study Guides</li>
+              <li>✔ 99.5% Proven Success Rate</li>
+              <li>✔ Completely Accurate Answer Key</li>
+            </ul>
+
+            <img
+              className="hidden lg:inline-flex"
+              src="/package-small-min_optimized.png" // Replace with actual image URL or import
+              alt="Product"
+              style={{ maxWidth: "150px", marginRight: "20px" }}
+            />
+          </Box>
+          {!showDownloadButtons ? (
+            <TextField
+              label="Enter Your Email"
+              type="email"
+              fullWidth
+              variant="outlined"
+              margin="normal"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              error={Boolean(emailError)}
+              helperText={emailError}
+            />
+          ) : (
+            <Typography
+              variant="subtitle1"
+              className="text-center mt-4"
+              color="green"
+            >
+              Download PDF & Test Engine Demo
+            </Typography>
+          )}
+        </DialogContent>
+        <DialogActions className="flex flex-col px-8">
+          {!showDownloadButtons ? (
+            <Button
+              onClick={handleGetDemoDownloads}
+              className="bg-purple-600 rounded-full  hover:bg-purple-800 focus:ring-4 -mt-6 focus:ring-gray-200 text-white font-semibold h-10 w-full px-7 py-4 flex items-center justify-center gap-2 transition duration-200"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="1em"
+                height="1em"
+                viewBox="0 0 24 24"
+              >
+                <g
+                  stroke="white"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                >
+                  <path
+                    fill="none"
+                    strokeDasharray="14"
+                    strokeDashoffset="14"
+                    d="M6 19h12"
+                  >
+                    <animate
+                      fill="freeze"
+                      attributeName="stroke-dashoffset"
+                      dur="0.4s"
+                      values="14;0"
+                    />
+                  </path>
+                  <path
+                    fill="white"
+                    d="M12 4 h2 v6 h2.5 L12 14.5M12 4 h-2 v6 h-2.5 L12 14.5"
+                  >
+                    <animate
+                      attributeName="d"
+                      calcMode="linear"
+                      dur="1.5s"
+                      keyTimes="0;0.7;1"
+                      repeatCount="indefinite"
+                      values="M12 4 h2 v6 h2.5 L12 14.5M12 4 h-2 v6 h-2.5 L12 14.5;M12 4 h2 v3 h2.5 L12 11.5M12 4 h-2 v3 h-2.5 L12 11.5;M12 4 h2 v6 h2.5 L12 14.5M12 4 h-2 v6 h-2.5 L12 14.5"
+                    />
+                  </path>
+                </g>
+              </svg>
+              <span style={{ fontSize: "16px", color: "white" }}>
+                Get Demo Downloads
+              </span>
+            </Button>
+          ) : (
+            <>
+              <Button className="bg-purple-600 rounded-full hover:bg-purple-800 focus:ring-4 -mt-6 focus:ring-gray-200 text-white font-semibold h-10 w-full px-7 py-4 flex items-center justify-center gap-2 transition duration-200">
+                Download PDF
+              </Button>
+              <Button className="bg-purple-600 rounded-full hover:bg-purple-800 focus:ring-4 mt-4 mr-2 focus:ring-gray-200 text-white font-semibold h-10 w-full px-7 py-4 flex items-center justify-center gap-2 transition duration-200">
+                Download Test Engine
+              </Button>
+            </>
+          )}
+        </DialogActions>
+        <Box paddingX={3} paddingBottom={2}>
+          <Typography
+            variant="caption"
+            className="text-center text-base"
+            color="error"
+            display="block"
+          >
+            (We will send your demo download links to your email address)
+          </Typography>
+          <Typography
+            variant="caption"
+            className="text-center text-base mt-2"
+            color="danger"
+            display="block"
+          >
+            ** We value your privacy. We will not share your email address.
+          </Typography>
+        </Box>
+      </Dialog>
+
       <Snackbar
         open={snackbarOpen}
         autoHideDuration={3000}
