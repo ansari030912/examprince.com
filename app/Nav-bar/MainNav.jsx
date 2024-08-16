@@ -872,7 +872,7 @@ const MainNav = () => {
                   <li>
                     <Link
                       className="p-3 py-4 flex items-center justify-between text-gray-700 hover:text-green-500 hover:bg-gray-100 rounded-md"
-                      href="/faq"
+                      href="/faqs"
                       onClick={closeNav}
                     >
                       <div className="flex items-center">

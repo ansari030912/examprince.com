@@ -89,7 +89,7 @@ const FooterBar = () => {
               <div class="w-auto p-3 md:px-6 py-2">
                 <Link
                   class="inline-block text-coolGray-500 hover:text-coolGray-600 font-medium"
-                  href="/faq"
+                  href="/faqs"
                 >
                   FAQ&apos;s
                 </Link>
