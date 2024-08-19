@@ -6,8 +6,8 @@ import ScrollToTop from "./components/Cards/ScrollToTop";
 import "./globals.css";
 
 export const metadata = {
-  title: "My Exams Courses",
-  description: "get your certified exams...",
+  title: "Exam Prince",
+  description: "Get your certified exams...",
 };
 
 export default function RootLayout({ children }) {
