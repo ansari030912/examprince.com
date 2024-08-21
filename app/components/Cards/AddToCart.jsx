@@ -64,6 +64,8 @@ const AddToCart = ({ examData }) => {
     localStorage.removeItem("CartProducts");
     localStorage.setItem("CartProducts", JSON.stringify(cartData));
     setSnackbarOpen(true);
+    // Reload the page
+    window.location.reload();
   };
 
   const handleCloseSnackbar = () => {

@@ -14,6 +14,8 @@ const UnlimitedPage = ({ data }) => {
     localStorage.removeItem("CartProducts");
     localStorage.setItem("CartProducts", JSON.stringify(cartData));
     setSnackbarOpen(true);
+    // Reload the page
+    window.location.reload();
   };
   const handleCloseSnackbar = () => {
     setSnackbarOpen(false);
