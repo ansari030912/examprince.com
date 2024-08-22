@@ -177,6 +177,7 @@ const ExamAddToCart = ({ examData }) => {
         </div>
       </section>
       <ImageCarousel examData={examData} />
+      <br />
       <ExamStats examData={examData} />
     </>
   );

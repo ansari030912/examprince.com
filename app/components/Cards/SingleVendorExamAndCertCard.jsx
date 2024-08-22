@@ -83,11 +83,15 @@ const SingleVendorExamAndCertCard = ({ vendorData, data }) => {
                     </span>
                     <div>
                       <Link
+                        className="hover:underline text-gray-700   hover:text-blue-600"
                         href={`/exam-questions/${vendorData.vendor_perma}/${item?.exam_perma}`}
                       >
-                        <h4 className="text-sm font-medium text-blue-500 hover:text-blue-600 hover:underline">
-                          {item.exam_title}
+                        <h4 className="text-lg font-medium text-blue-500  ">
+                          {item?.exam_code}
                         </h4>
+                        <p className="text-sm font-medium ">
+                          {item.exam_title}
+                        </p>
                       </Link>
                     </div>
                   </div>
