@@ -21,6 +21,9 @@ import {
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import BackCountDown from "./BackCountDown";
+import { Base_URL } from "@/app/URL's/Base_URL";
+import axios from "axios";
+import { X_API_Key } from "@/app/URL's/Api_X_Key";
 
 const AddToCart = ({ examData }) => {
   const [price, setPrice] = useState("0");
@@ -32,6 +35,8 @@ const AddToCart = ({ examData }) => {
   const [email, setEmail] = useState("");
   const [showDownloadButtons, setShowDownloadButtons] = useState(false);
   const [emailError, setEmailError] = useState("");
+  const [pdfDownloadLink, setPdfDownloadLink] = useState("");
+  const [teDownloadLink, setTeDownloadLink] = useState("");
 
   const handleDialogClose = () => {
     setDialogOpen(false);
@@ -40,7 +45,7 @@ const AddToCart = ({ examData }) => {
     setShowDownloadButtons(false);
   };
 
-  const handleGetDemoDownloads = () => {
+  const handleGetDemoDownloads = async () => {
     if (!email) {
       setEmailError("Email is required");
       return;
@@ -52,20 +57,67 @@ const AddToCart = ({ examData }) => {
       setEmailError("Please enter a valid email address");
       return;
     }
-    setEmail("");
-    setEmailError("");
-    setShowDownloadButtons(true);
+
+    try {
+      const response = await axios.post(
+        `${Base_URL}/v1/demo`,
+        {
+          email: email,
+          exam_perma: examData?.exam_perma,
+        },
+        {
+          headers: {
+            "x-api-key": X_API_Key,
+          },
+        }
+      );
+
+      const demoLinks = response.data;
+
+      const pdfLink = demoLinks.find((link) => link.type === "pdf")?.link;
+      const teLink = demoLinks.find((link) => link.type === "te")?.link;
+
+      setEmail("");
+      setEmailError("");
+      setShowDownloadButtons(true);
+      setPdfDownloadLink(pdfLink);
+      setTeDownloadLink(teLink);
+    } catch (error) {
+      console.error("Error fetching demo download links:", error);
+    }
   };
+
   const handleBoxClick = (item) => {
-    const cartData = {
-      cart: item.cart,
-      saveExam: true,
-    };
-    localStorage.removeItem("CartProducts");
-    localStorage.setItem("CartProducts", JSON.stringify(cartData));
-    setSnackbarOpen(true);
-    // Reload the page
-    window.location.reload();
+    // Retrieve the existing cart data from local storage
+    const existingCartData =
+      JSON.parse(localStorage.getItem("CartProducts")) || [];
+
+    // Check if the item is already in the cart
+    const isItemInCart = existingCartData.some(
+      (cartItem) => cartItem.cart === item.cart
+    );
+
+    if (!isItemInCart) {
+      // If the item is not already in the cart, add it
+      const cartData = {
+        cart: item.cart,
+        saveExam: true,
+      };
+
+      existingCartData.push(cartData);
+
+      // Save the updated array back to local storage
+      localStorage.setItem("CartProducts", JSON.stringify(existingCartData));
+
+      // Open the snackbar to show a message to the user
+      setSnackbarOpen(true);
+
+      // Reload the page
+      window.location.reload();
+    } else {
+      // Optionally, you could display a message that the item is already in the cart
+      console.log("Item already in the cart");
+    }
   };
 
   const handleCloseSnackbar = () => {
@@ -574,22 +626,12 @@ const AddToCart = ({ examData }) => {
             </Button>
           ) : (
             <>
-              <Link
-                className="w-full"
-                href={
-                  "https://dumpsarena.com/demo-dl-pdf/826e4fcad0984eeda11dc92ed2639ec9"
-                }
-              >
+              <Link className="w-full" href={`https://certsgang.com${pdfDownloadLink}`}>
                 <Button className="bg-purple-600 rounded-full hover:bg-purple-800 focus:ring-4 -mt-6 focus:ring-gray-200 text-white font-semibold h-10 w-full px-7 py-4 flex items-center justify-center gap-2 transition duration-200">
                   Download PDF
                 </Button>
               </Link>
-              <Link
-                className="w-full"
-                href={
-                  "https://dumpsarena.com/demo-dl-engine/826e4fcad0984eeda11dc92ed2639ec9"
-                }
-              >
+              <Link className="w-full" href={`https://certsgang.com${teDownloadLink}`}>
                 <Button className="bg-purple-600 rounded-full hover:bg-purple-800 focus:ring-4 mt-4 mr-2 focus:ring-gray-200 text-white font-semibold h-10 w-full px-7 py-4 flex items-center justify-center gap-2 transition duration-200">
                   Download Test Engine
                 </Button>

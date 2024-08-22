@@ -1,5 +1,9 @@
+/* eslint-disable @next/next/no-img-element */
+import Link from "next/link";
 import AllVideoCourses from "../components/Cards/AllVideoCourses";
 import HotExams from "../components/IndexPages/HotExams";
+import { Base_URL } from "../URL's/Base_URL";
+import { X_API_Key } from "../URL's/Api_X_Key";
 
 export async function generateMetadata() {
   return {
@@ -19,12 +23,24 @@ export async function generateMetadata() {
   };
 }
 
-const page = ({ searchParams }) => {
+const page = async ({ searchParams }) => {
   const referral = searchParams?.ref || "";
+  const bannerResponec = await fetch(`${Base_URL}/v1/banner`, {
+    headers: {
+      "x-api-key": X_API_Key,
+    },
+  });
+
+  const imageUrl = await bannerResponec.json();
   const randomReviewCount = Math.floor(Math.random() * (999 - 700 + 1)) + 700;
   return (
     <>
-      <AllVideoCourses referral={referral} />
+      <section class="pt-6 pb-6 px-6 bg-white">
+        <Link href={imageUrl?.banner_link} className="flex justify-center mb-4">
+          <img src={imageUrl?.banner_src} alt={imageUrl?.banner_website} />
+        </Link>
+      </section>
+      <AllVideoCourses imageUrl={imageUrl} referral={referral} />
       <HotExams />
     </>
   );

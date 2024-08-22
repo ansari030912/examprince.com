@@ -2,6 +2,7 @@
 import { X_API_Key } from "@/app/URL's/Api_X_Key";
 import { Base_URL } from "@/app/URL's/Base_URL";
 import SingleVendorExamAndCertCard from "@/app/components/Cards/SingleVendorExamAndCertCard";
+import Link from "next/link";
 
 export async function generateMetadata({ params }) {
   const response = await fetch(`${Base_URL}/v1/vendor/${params.vendor_perma}`, {
@@ -39,6 +40,14 @@ const page = async ({ params }) => {
   );
   const randomReviewCount = Math.floor(Math.random() * (999 - 700 + 1)) + 700;
   const vendorData = await vendorResponce.json();
+
+  const bannerResponec = await fetch(`${Base_URL}/v1/banner`, {
+    headers: {
+      "x-api-key": X_API_Key,
+    },
+  });
+
+  const imageUrl = await bannerResponec.json();
 
   const response = await fetch(`${Base_URL}/v1/hot_exams`, {
     headers: {
@@ -78,9 +87,9 @@ const page = async ({ params }) => {
         }}
       />
       <section class="pt-6 pb-6 px-6 bg-white">
-        <div className="flex justify-center mb-4">
-          <img src="/MEGASALE DA-min.png" alt="" />
-        </div>
+        <Link href={imageUrl?.banner_link} className="flex justify-center mb-4">
+          <img src={imageUrl?.banner_src} alt={imageUrl?.banner_website} />
+        </Link>
       </section>
       <div className="mx-auto container">
         <SingleVendorExamAndCertCard data={data} vendorData={vendorData} />

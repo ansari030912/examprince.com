@@ -7,12 +7,12 @@ import {
   Grid,
   Snackbar,
   SnackbarContent,
-  Typography
+  Typography,
 } from "@mui/material";
 import axios from "axios";
 import Link from "next/link";
-import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
+import { useEffect, useState } from "react";
 import { X_API_Key } from "../../URL's/Api_X_Key";
 import { Base_URL } from "../../URL's/Base_URL";
 
@@ -101,7 +101,7 @@ const CartCard = () => {
           `${Base_URL}/v1/update-cart`,
           {
             coupon: promoCode,
-            cart_items: [cartResponse[0].cart],
+            cart_items: cartResponse.map((item) => item.cart),
           },
           {
             headers: {
@@ -115,10 +115,9 @@ const CartCard = () => {
             response.data.length > 0 &&
             response.data[0].exam_code
           ) {
-            
             setCartResponse(response.data);
             setApiPromoCode(promoCode);
-            setSnackbarMessage("Cuppon Applied!");
+            setSnackbarMessage("Coupon Applied!");
             setSnackbarBgColor("green");
             setSnackbarOpen(true);
             setErrorMessage("");
@@ -129,7 +128,7 @@ const CartCard = () => {
         .catch((error) => {
           console.error("Error updating cart with promo code:", error);
           setErrorMessage("Invalid Promo Code");
-          setSnackbarMessage("Invalid Cuppon Code.");
+          setSnackbarMessage("Invalid Coupon Code.");
           setSnackbarBgColor("red");
           setSnackbarOpen(true);
         });
@@ -156,7 +155,7 @@ const CartCard = () => {
             coupon: apiPromoCode,
             IsInvoice: false,
             invoice_perma: "",
-            cart_items: [cartResponse[0].cart],
+            cart_items: cartResponse.map((item) => item.cart),
           },
           {
             headers: {
@@ -185,22 +184,41 @@ const CartCard = () => {
     }, 2000); // 2 seconds delay
   };
 
-  const discountAmount =
-    Math.floor(cartResponse?.[0]?.full_price) -
-    Math.floor(cartResponse?.[0]?.price);
+  // Calculating subtotal, discount, and final total amount
+  const calculateTotals = () => {
+    const subtotal = cartResponse.reduce(
+      (acc, item) => acc + parseFloat(item.full_price),
+      0
+    );
+    const discount = cartResponse.reduce(
+      (acc, item) =>
+        acc + (parseFloat(item.full_price) - parseFloat(item.price)),
+      0
+    );
+    const total = cartResponse.reduce(
+      (acc, item) => acc + parseFloat(item.price),
+      0
+    );
+    return { subtotal, discount, total };
+  };
+
+  const totals = calculateTotals();
 
   useEffect(() => {
     if (typeof localStorage !== "undefined") {
       const storedCartResponse = localStorage.getItem("CartProducts");
       if (storedCartResponse) {
         const cartProducts = JSON.parse(storedCartResponse);
-        if (cartProducts.saveExam) {
+        setCartResponse(cartProducts);
+        // Call API to update cart if saveExam is true
+        const saveExamItems = cartProducts.filter((item) => item.saveExam);
+        if (saveExamItems.length > 0) {
           axios
             .post(
               `${Base_URL}/v1/update-cart`,
               {
                 coupon: promoCode,
-                cart_items: [cartProducts.cart],
+                cart_items: saveExamItems.map((item) => item.cart),
               },
               {
                 headers: {
@@ -226,6 +244,38 @@ const CartCard = () => {
 
   const handleSnackbarClose = () => {
     setSnackbarOpen(false);
+  };
+
+  const handleRemoveItem = (itemToRemove) => {
+    // Extract the prefix (first two points) of the itemToRemove cart string
+    const itemPrefix = itemToRemove.cart.split("_").slice(0, 5).join("_") + "_";
+
+    // Filter out the item to be removed from the cartResponse state based on the prefix
+    const updatedCartResponse = cartResponse.filter(
+      (item) => !item.cart.startsWith(itemPrefix)
+    );
+
+    // Update the cartResponse state
+    setCartResponse(updatedCartResponse);
+
+    // Update the CartProducts in local storage
+    if (typeof localStorage !== "undefined") {
+      const storedCartResponse = localStorage.getItem("CartProducts");
+      if (storedCartResponse) {
+        const cartProducts = JSON.parse(storedCartResponse);
+
+        // Filter out the matching cart item from local storage based on the prefix
+        const updatedCartProducts = cartProducts.filter(
+          (item) => !item.cart.startsWith(itemPrefix)
+        );
+
+        // Update the local storage with the new array
+        localStorage.setItem(
+          "CartProducts",
+          JSON.stringify(updatedCartProducts)
+        );
+      }
+    }
   };
 
   return (
@@ -256,7 +306,7 @@ const CartCard = () => {
                 </div>
               </Link>
               <Link href="#" className="group">
-                <div className="flex flex-wrap items-center">
+                <div className="flex flex-wrap items=center">
                   <span className="text-xs text-gray-500 group-hover:text-gray-900 transition duration-200">
                     Checkout
                   </span>
@@ -294,41 +344,67 @@ const CartCard = () => {
                             width={"200px"}
                           />
                         </div>
-                        <div className="flex -m-2">
-                          <div className="w-auto hidden lg:inline-flex p-2">
-                            <img
-                              className="rounded-lg"
-                              src="/package-small-min_optimized.png"
-                              alt=""
-                              width={"200px"}
-                            />
-                          </div>
-                          <div className="p-2 pl-5 lg:pl-0 w-full flex flex-col justify-center">
-                            <div>
-                              <p className="mb-1.5 font-semibold text-gray-600 text-lg">
-                                {cartResponse[0]?.exam_code}
-                              </p>
-                              <p className="mb-1.5 font-semibold text-blue-500 text-base">
-                                {cartResponse[0]?.exam_title}
-                              </p>
-                              <p className="mb-1.5 text-sm text-green-600">
-                                {cartResponse[0]?.exam_title ===
-                                cartResponse[0]?.title
-                                  ? ""
-                                  : cartResponse[0]?.title}
-                              </p>
-                              <div className="flex justify-between">
-                                <p className="text-base">x1</p>
-                                <span className="text-xl font-bold text-green-500">
-                                  $ {cartResponse[0]?.price} /{" "}
-                                  <span className="text-red-500 text-sm line-through">
-                                    $ {cartResponse[0]?.full_price}
-                                  </span>{" "}
-                                </span>
+                        {cartResponse.map((item) => (
+                          <div
+                            key={item.exam_code}
+                            className="flex -m-2 border-b-2 mb-4"
+                          >
+                            <div className="w-auto hidden lg:inline-flex p-2">
+                              <img
+                                className="rounded-lg"
+                                src="/package-small-min_optimized.png"
+                                alt=""
+                                width={"160px"}
+                              />
+                            </div>
+                            <div className="p-2 pl-5 lg:pl-0 w-full flex flex-col justify-center">
+                              <div>
+                                <div className="flex justify-between">
+                                  <div>
+                                    <p className="mb-1.5 font-semibold text-gray-600 text-lg">
+                                      {item.exam_code}
+                                    </p>
+                                    <p className="mb-1.5 font-semibold text-blue-500 text-base">
+                                      {item.exam_title}
+                                    </p>
+                                    <p className="mb-1.5 text-sm text-green-600">
+                                      {item.exam_title === item.title
+                                        ? ""
+                                        : item.title}
+                                    </p>
+                                  </div>
+                                  {cartResponse.length > 1 && (
+                                    <button
+                                      onClick={() => handleRemoveItem(item)}
+                                      className="flex flex-col justify-center"
+                                    >
+                                      <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        width="1.5em"
+                                        height="1.5em"
+                                        viewBox="0 0 24 24"
+                                      >
+                                        <path
+                                          fill="red"
+                                          d="M19 6.41L17.59 5L12 10.59L6.41 5L5 6.41L10.59 12L5 17.59L6.41 19L12 13.41L17.59 19L19 17.59L13.41 12z"
+                                        />
+                                      </svg>
+                                    </button>
+                                  )}
+                                </div>
+                                <div className="flex justify-between">
+                                  <p className="text-base">x1</p>
+                                  <span className="text-xl font-bold text-green-500">
+                                    ${item.price} /{" "}
+                                    <span className="text-gray-500 text-sm line-through">
+                                      ${item.full_price}
+                                    </span>{" "}
+                                  </span>
+                                </div>
                               </div>
                             </div>
                           </div>
-                        </div>
+                        ))}
                       </div>
                     </div>
                     <button
@@ -406,7 +482,7 @@ const CartCard = () => {
                       </div>
                       <div className="w-auto p-2">
                         <span className="font-semibold text-xl text-red-500">
-                          $ {cartResponse[0]?.full_price}
+                          ${totals.subtotal.toFixed(2)}
                         </span>
                       </div>
                     </div>
@@ -416,7 +492,7 @@ const CartCard = () => {
                       </div>
                       <div className="w-auto p-2">
                         <span className="font-semibold text-green-500 text-xl">
-                          {cartResponse[0]?.off} %
+                          {cartResponse[0]?.off}%
                         </span>
                       </div>
                     </div>
@@ -426,24 +502,25 @@ const CartCard = () => {
                       </div>
                       <div className="w-auto p-2">
                         <span className="font-semibold text-green-500 text-xl">
-                          $ {discountAmount}
+                          ${totals.discount.toFixed(2)}
                         </span>
                       </div>
                     </div>
                   </div>
                   <div className="pt-6">
-                    <div className="flex flex-wrap items-center justify-between -m-2">
+                    <div className="flex flex-wrap items=center justify-between -m-2">
                       <div className="w-auto p-2">
                         <p className="font-semibold text-2xl">Total Price</p>
                       </div>
                       <div className="w-auto p-2">
                         <p className="text-2xl font-semibold text-green-500">
-                          $ {cartResponse[0]?.price}
+                          ${totals.total.toFixed(2)}
                         </p>
                       </div>
                     </div>
                   </div>
                 </div>
+
                 <FormControlLabel
                   sx={{ mt: "10px", mb: "-10px", pl: "10px" }}
                   control={

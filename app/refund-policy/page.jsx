@@ -1,9 +1,24 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
+import { Base_URL } from "../URL's/Base_URL";
+import { X_API_Key } from "../URL's/Api_X_Key";
 
-const RefundPolicy = () => {
+const RefundPolicy = async () => {
+  const bannerResponec = await fetch(`${Base_URL}/v1/banner`, {
+    headers: {
+      "x-api-key": X_API_Key,
+    },
+  });
+
+  const imageUrl = await bannerResponec.json();
+
   return (
     <>
+      <section class="pt-6 px-6 bg-white">
+        <Link href={imageUrl?.banner_link} className="flex justify-center mb-4">
+          <img src={imageUrl?.banner_src} alt={imageUrl?.banner_website} />
+        </Link>
+      </section>
       <section
         className="py-16 md:py-24 bg-white"
         style={{

@@ -7,15 +7,36 @@ const UnlimitedPage = ({ data }) => {
   const [snackbarOpen, setSnackbarOpen] = useState(false);
 
   const handleBoxClick = (item) => {
-    const cartData = {
-      cart: item.cart,
-      saveExam: true,
-    };
-    localStorage.removeItem("CartProducts");
-    localStorage.setItem("CartProducts", JSON.stringify(cartData));
-    setSnackbarOpen(true);
-    // Reload the page
-    window.location.reload();
+    // Retrieve the existing cart data from local storage
+    const existingCartData =
+      JSON.parse(localStorage.getItem("CartProducts")) || [];
+
+    // Check if the item is already in the cart
+    const isItemInCart = existingCartData.some(
+      (cartItem) => cartItem.cart === item.cart
+    );
+
+    if (!isItemInCart) {
+      // If the item is not already in the cart, add it
+      const cartData = {
+        cart: item.cart,
+        saveExam: true,
+      };
+
+      existingCartData.push(cartData);
+
+      // Save the updated array back to local storage
+      localStorage.setItem("CartProducts", JSON.stringify(existingCartData));
+
+      // Open the snackbar to show a message to the user
+      setSnackbarOpen(true);
+
+      // Reload the page
+      window.location.reload();
+    } else {
+      // Optionally, you could display a message that the item is already in the cart
+      console.log("Item already in the cart");
+    }
   };
   const handleCloseSnackbar = () => {
     setSnackbarOpen(false);

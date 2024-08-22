@@ -5,6 +5,7 @@ import Link from "next/link";
 import AddToCart from "./AddToCart";
 import ExamDetailCard from "./ExamDetailCard";
 import ExamStats from "./ExamStats";
+import ImageCarousel from "../ImagesCaresol/ImageCarousel";
 const ExamAddToCart = ({ examData }) => {
   return (
     <>
@@ -175,6 +176,7 @@ const ExamAddToCart = ({ examData }) => {
           <AddToCart examData={examData} />
         </div>
       </section>
+      <ImageCarousel examData={examData} />
       <ExamStats examData={examData} />
     </>
   );

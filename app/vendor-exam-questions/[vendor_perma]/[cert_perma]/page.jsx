@@ -51,6 +51,15 @@ const CertificationExamPage = async ({ params }) => {
     }
   );
   const data = await response.json();
+
+  const bannerResponec = await fetch(`${Base_URL}/v1/banner`, {
+    headers: {
+      "x-api-key": X_API_Key,
+    },
+  });
+
+  const imageUrl = await bannerResponec.json();
+
   const randomReviewCount = Math.floor(Math.random() * (999 - 700 + 1)) + 700;
   return (
     <>
@@ -102,9 +111,12 @@ const CertificationExamPage = async ({ params }) => {
       {data._has_multiple_exams && (
         <>
           <section class="pt-6 pb-6 px-6 bg-white">
-            <div className="flex justify-center mb-4">
-              <img src="/MEGASALE DA-min.png" alt="" />
-            </div>
+            <Link
+              href={imageUrl?.banner_link}
+              className="flex justify-center mb-4"
+            >
+              <img src={imageUrl?.banner_src} alt={imageUrl?.banner_website} />
+            </Link>
           </section>
           <ExamDetailCard />
           <section class="my-10 px-6 bg-white">

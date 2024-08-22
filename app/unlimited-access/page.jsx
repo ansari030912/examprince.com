@@ -3,6 +3,7 @@ import React from "react";
 import UnlimitedPage from "../components/Cards/UnlimitedPage";
 import { X_API_Key } from "../URL's/Api_X_Key";
 import { Base_URL } from "../URL's/Base_URL";
+import Link from "next/link";
 
 const page = async () => {
   const response = await fetch(
@@ -15,12 +16,19 @@ const page = async () => {
   );
 
   const data = await response.json();
+  const bannerResponec = await fetch(`${Base_URL}/v1/banner`, {
+    headers: {
+      "x-api-key": X_API_Key,
+    },
+  });
+
+  const imageUrl = await bannerResponec.json();
 
   return (
     <section class="pt-6 pb-6 px-6 bg-white">
-      <div className="flex justify-center mb-4">
-        <img src="/MEGASALE DA-min.png" alt="" />
-      </div>
+      <Link href={imageUrl?.banner_link} className="flex justify-center mb-4">
+        <img src={imageUrl?.banner_src} alt={imageUrl?.banner_website} />
+      </Link>
       <UnlimitedPage data={data} />
     </section>
   );

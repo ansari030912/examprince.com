@@ -8,6 +8,7 @@ import ExamDetailCard from "@/app/components/Cards/ExamDetailCard";
 import ExamFaqCard from "@/app/components/Cards/ExamFaqCard";
 import HotExams from "@/app/components/IndexPages/HotExams";
 import LogoBanner from "@/app/components/IndexPages/LogoBanner";
+import Link from "next/link";
 
 const page = async ({ params, searchParams }) => {
   const referral = searchParams?.ref || "";
@@ -31,7 +32,7 @@ const page = async ({ params, searchParams }) => {
       },
     }
   );
-  
+
   const examData = await examResponce.json();
 
   const response = await fetch(`${Base_URL}/v1/hot_exams`, {
@@ -41,15 +42,22 @@ const page = async ({ params, searchParams }) => {
   });
 
   const data = await response.json();
+  const bannerResponec = await fetch(`${Base_URL}/v1/banner`, {
+    headers: {
+      "x-api-key": X_API_Key,
+    },
+  });
+
+  const imageUrl = await bannerResponec.json();
 
   const randomReviewCount = Math.floor(Math.random() * (999 - 700 + 1)) + 700;
 
   return (
     <>
       <section class="pt-6 pb-6 px-6 bg-white">
-        <div className="flex justify-center mb-4">
-          <img src="/MEGASALE DA-min.png" alt="" />
-        </div>
+        <Link href={imageUrl?.banner_link} className="flex justify-center mb-4">
+          <img src={imageUrl?.banner_src} alt={imageUrl?.banner_website} />
+        </Link>
       </section>
       <div className="md:block hidden">
         <ExamDetailCard />
