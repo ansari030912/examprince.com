@@ -52,7 +52,8 @@ const ExamAddToCart = ({ examData }) => {
             <div class="w-full lg:w-8/12 p-4">
               <div class="p-5 md:p-10">
                 <h2 class="font-heading font-bold text-gray-600 uppercase text-3xl mb-2 max-w-4xl">
-                  {examData.exam_code} - {examData.exam_title}
+                  {examData.exam_code} - {examData.exam_vendor_title} -{" "}
+                  {examData.exam_title}
                 </h2>
                 <p class="text-gray-500 text-base font-bold max-w-2xl mb-2">
                   Everything you need to prepare, learn & pass your
