@@ -146,9 +146,7 @@ const ProductPage = () => {
                                 {product?.type === "download_pdf" ? (
                                   <Tooltip title="Download Premium PDF File">
                                     <Link
-                                      href={
-                                        "https://api.dumpsboss.com/v1/download/pdf-file/?token=222QkEIbM5COm1qhoPhqkAu1Xa2gmks1HOgD9jFkbNwizEDxEtxcYhMWhAxhm7CM5tIUSTZJCk"
-                                      }
+                                      href={`https://certsgang.com${product.url}`}
                                     >
                                       <IconButton className="bg-green-400 h-10 w-10 hover:bg-green-500 mr-1">
                                         <svg
