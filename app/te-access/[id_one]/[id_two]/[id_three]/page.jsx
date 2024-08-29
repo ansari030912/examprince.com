@@ -92,7 +92,7 @@ const TeAccess = ({ params }) => {
           mt: "10px",
           p: "20px",
           // boxShadow: "inset 0px 0px 8px rgba(0, 0, 0, 0.5)",
-          borderRadius: "12px",
+          borderRadius: "4px",
         }}
       >
         <Typography
@@ -126,9 +126,9 @@ const TeAccess = ({ params }) => {
             border: "0px",
             borderRadius: "0px",
             marginTop: "10px",
-            boxShadow: "0px 0px 8px rgba(0, 0, 0, 0.5)",
-            borderRadius: "12px",
-            padding: "15px",
+            // boxShadow: "0px 0px 8px rgba(0, 0, 0, 0.5)",
+            // borderRadius: "12px",
+            paddingX: "20px",
             bgcolor: "white",
           }}
         >
@@ -167,8 +167,8 @@ const TeAccess = ({ params }) => {
                 sx={{
                   marginBottom: "10px",
                   marginTop: "10px",
-                  boxShadow: "inset 0px 0px 8px rgba(0, 0, 0, 0.5)",
-                  color: "#707070",
+                  boxShadow: "inset 0px 0px 8px rgba(0, 0, 0, 0.2)",
+                  color: "#0070",
                   fontWeight: "bold",
                 }}
               />
@@ -196,6 +196,7 @@ const TeAccess = ({ params }) => {
         className="container mx-auto"
         sx={{
           mt: "10px",
+          mb: "10px",
           display: "flex",
           justifyContent: "flex-end",
         }}
@@ -209,12 +210,12 @@ const TeAccess = ({ params }) => {
                   width="1.7em"
                   height="1.4em"
                 />
-                Download .ExamPrince File
+                Download .examprince File
               </span>
             </button>
           </Link>
         )}
-        {teAccess.te_file_zip && (
+        {/* {teAccess.te_file_zip && (
           <Link href={`https://certsgang.com${teAccess.te_file_zip}`}>
             <button className="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-white rounded-lg group hover:bg-gradient-to-l bg-gradient-to-br from-green-500 to-green-500 group-hover:from-cyan-500 group-hover:to-green-500 hover:text-white">
               <span className="relative px-5 py-2.5 transition-all ease-in duration-75  rounded-md group-hover:bg-opacity-0 flex">
@@ -227,7 +228,7 @@ const TeAccess = ({ params }) => {
               </span>
             </button>
           </Link>
-        )}
+        )} */}
       </Box>
       <Box
         className="container mx-auto bg-green-100"
@@ -245,9 +246,9 @@ const TeAccess = ({ params }) => {
         </Typography>
         <Typography className="text-gray-700" fontWeight={600}>
           Download the ExamPrince Test Engine Simulator and install it, then
-          download the premium .ExamPrince file using above yellow button and
+          download the premium .examprince file using above yellow button and
           you will get .zip file, unzip it, and add it to ExamPrince Test Engine
-          Simulator. Activate the premium .ExamPrince file with above purchase
+          Simulator. Activate the premium .examprince file with above purchase
           and activation keys.
         </Typography>
       </Box>

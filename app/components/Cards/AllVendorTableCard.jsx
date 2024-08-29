@@ -99,7 +99,7 @@ const AllVendorTableCard = ({ data }) => {
                           >
                             <img
                               className="rounded-xl w-full h-full transform group-hover:scale-105 transition duration-200"
-                              src="/video-file-formats.png"
+                              src={`https://video.dumpsarena.com/img/${item.image}`}
                               alt=""
                             />
                             <div className="absolute top-2 left-2 right-2">

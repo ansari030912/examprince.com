@@ -36,7 +36,7 @@ const page = async () => {
           className="text-gray-800"
           sx={{ textAlign: "center" }}
         >
-          HOW TO OPEN TEST ENGINE .ExamPrince FILES
+          HOW TO OPEN TEST ENGINE .examprince FILES
         </Typography>
         <Typography
           variant="body2"
