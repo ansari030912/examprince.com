@@ -20,6 +20,19 @@ const MainNav = () => {
   const [vendorData, setVendorData] = useState([]);
   const [certificationData, setCertificationData] = useState([]);
   const [searchValue, setSearchValue] = useState("");
+  const [ip, setIp] = useState(null);
+  console.log("🚀 ~ MainNav ~ ip:", ip);
+
+  useEffect(() => {
+    async function fetchIp() {
+      const response = await axios.get("/api/get-ip");
+      const data = await response.json();
+      console.log("🚀 ~ fetchIp ~ data:", data)
+      setIp(data.ip);
+    }
+
+    fetchIp();
+  }, []);
 
   const handleSignOut = () => {
     localStorage.removeItem("loginResponse");
