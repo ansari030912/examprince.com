@@ -4,13 +4,12 @@
 "use client";
 import { X_API_Key } from "@/app/URL's/Api_X_Key";
 import { Base_URL } from "@/app/URL's/Base_URL";
+import withAuth from "@/app/auth/RouterAuth";
+
 import ScAccessAccordian from "@/app/components/ProductsCrds/ScAccessAccordian";
-import { Container, Grid } from "@mui/material";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import withAuth from "../../../auth/RouterAuth";
-
 const ScAccess = async ({ params }) => {
   const [data, setData] = useState(null);
   const router = useRouter();

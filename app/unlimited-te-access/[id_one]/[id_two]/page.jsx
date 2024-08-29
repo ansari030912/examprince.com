@@ -1,5 +1,6 @@
 "use client";
-/* eslint-disable react-hooks/exhaustive-deps */
+
+import withAuth from "@/app/auth/RouterAuth";
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable @next/next/no-img-element */
 import { X_API_Key } from "@/app/URL's/Api_X_Key";
@@ -23,7 +24,6 @@ import {
 import axios from "axios";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-
 const UnlimitedTeAccessPage = ({ params }) => {
   const [dialogOpen, setDialogOpen] = useState(false);
   const [unlimitedTeAccess, setUnlimitedTeAccess] = useState(null);
@@ -461,4 +461,4 @@ const UnlimitedTeAccessPage = ({ params }) => {
   );
 };
 
-export default UnlimitedTeAccessPage;
+export default withAuth(UnlimitedTeAccessPage);

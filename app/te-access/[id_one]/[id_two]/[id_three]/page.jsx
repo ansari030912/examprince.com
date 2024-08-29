@@ -1,4 +1,5 @@
 "use client";
+import withAuth from "@/app/auth/RouterAuth";
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable @next/next/no-img-element */
 import { X_API_Key } from "@/app/URL's/Api_X_Key";
@@ -243,15 +244,15 @@ const TeAccess = ({ params }) => {
           How To Use?
         </Typography>
         <Typography className="text-gray-700" fontWeight={600}>
-          Download the ExamPrince Test Engine Simulator and install it,
-          then download the premium .ExamPrince file using above yellow
-          button and you will get .zip file, unzip it, and add it to
-          ExamPrince Test Engine Simulator. Activate the premium
-          .ExamPrince file with above purchase and activation keys.
+          Download the ExamPrince Test Engine Simulator and install it, then
+          download the premium .ExamPrince file using above yellow button and
+          you will get .zip file, unzip it, and add it to ExamPrince Test Engine
+          Simulator. Activate the premium .ExamPrince file with above purchase
+          and activation keys.
         </Typography>
       </Box>
     </div>
   );
 };
 
-export default TeAccess;
+export default withAuth(TeAccess);
