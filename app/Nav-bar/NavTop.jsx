@@ -7,11 +7,17 @@ const NavTop = () => {
   const [clientIp, setClientIp] = useState("");
 
   useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    const ip = params.get("clientIp");
-    if (ip) {
-      setClientIp(ip);
-    }
+    const fetchClientIp = async () => {
+      try {
+        const response = await fetch("/api/get-client-ip");
+        const data = await response.json();
+        setClientIp(data.ip);
+      } catch (error) {
+        console.error("Error fetching client IP:", error);
+      }
+    };
+
+    fetchClientIp();
   }, []);
 
   return (
@@ -52,11 +58,9 @@ const NavTop = () => {
                   MEGASALE
                 </span>
               </span>
-              {clientIp && (
-                <div className="mt-2 text-xs">
-                  <strong>Your IP:</strong> {clientIp}
-                </div>
-              )}
+              <div className="mt-2 text-xs">
+                <strong>Your IP:</strong> {clientIp}
+              </div>
             </span>
           </div>
         </div>
