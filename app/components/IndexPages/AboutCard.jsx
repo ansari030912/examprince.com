@@ -145,7 +145,7 @@ const AboutCard = () => {
                 <div className="mt-8 -pb-6">
                   <Link
                     href={
-                      "https://releases.dumpsarena.com/DumpsArenaTestEngine.zip"
+                      "https://releases.examprince.com/ExamPrinceTestEngine.zip"
                     }
                     type="button"
                     className="text-gray-700 flex justify-center border-2 hover:bg-gray-700 hover:text-white border-gray-700 font-medium  text-sm px-5 py-2.5 text-center me-2 mb-2"
@@ -157,7 +157,7 @@ const AboutCard = () => {
                   <Link
                     type="button"
                     href={
-                      "https://releases.dumpsarena.com/DumpsArenaTestEngine.exe"
+                      "https://releases.examprince.com/ExamPrinceTestEngine.exe"
                     }
                     className="text-gray-700 flex justify-center border-2 hover:bg-gray-700 hover:text-white border-gray-700 font-medium  text-sm px-5 py-2.5 text-center me-2 mb-2"
                   >

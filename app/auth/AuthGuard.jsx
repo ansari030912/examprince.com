@@ -13,6 +13,7 @@ export const AuthGuard = ({ children }) => {
     expiredTimer = setTimeout(() => {
       alert("Token expired Please login again!");
       localStorage.removeItem("loginResponse");
+      window.location.reload();
       router.push("/login");
     }, timeLeft);
   };

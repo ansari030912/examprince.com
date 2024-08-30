@@ -1,6 +1,7 @@
 import FooterBar from "./Footer/FooterBar";
 import MainNav from "./Nav-bar/MainNav";
 import NavTop from "./Nav-bar/NavTop";
+import { AuthGuard } from "./auth/AuthGuard";
 import ScrollLoader from "./components/Cards/ScrollLoader";
 import ScrollToTop from "./components/Cards/ScrollToTop";
 import "./globals.css";
@@ -17,7 +18,7 @@ export default function RootLayout({ children }) {
         <NavTop />
         <MainNav />
         <ScrollLoader />
-        {children}
+        <AuthGuard>{children}</AuthGuard>
         <ScrollToTop />
         <FooterBar />
       </body>
