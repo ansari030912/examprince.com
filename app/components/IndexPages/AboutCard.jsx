@@ -143,7 +143,7 @@ const AboutCard = () => {
                   </li>
                 </ul>
                 <div className="mt-8 -pb-6">
-                  {/* <Link
+                  <Link
                     href={
                       "https://releases.dumpsarena.com/DumpsArenaTestEngine.zip"
                     }
@@ -153,7 +153,7 @@ const AboutCard = () => {
                     <b style={{ textAlign: "center" }}>
                       Download for windows (.zip)
                     </b>
-                  </Link> */}
+                  </Link>
                   <Link
                     type="button"
                     href={

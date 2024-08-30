@@ -136,13 +136,16 @@ const TeAccess = ({ params }) => {
             <>
               <Typography fontWeight={600}>
                 Activation & Purchase Key {i + 1}
-              </Typography>{" "}
+              </Typography>
+              <Typography className="text-red-500">
+                {item.activation_key_used ? "This key is used or expired!" : ""}
+              </Typography>
               <TextField
                 size="small"
                 variant="outlined"
                 // label={"Activation Keys"}
                 value={`${item.purchase_key}|${item.activation_key}`}
-                disabled
+                disabled={item.activation_key_used ? true : false}
                 fullWidth
                 InputProps={{
                   readOnly: true,

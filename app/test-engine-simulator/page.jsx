@@ -21,7 +21,7 @@ const page = async () => {
         className=" py-6 bg-cover bg-fixed"
         style={{ backgroundImage: `url("/bg-img-1.jpg")` }}
       >
-        <section className="pt-6 px-6 pb-6">
+        <section class="pt-6 px-6 pb-6">
           <Link
             href={imageUrl?.banner_link}
             className="flex justify-center mb-4"
@@ -162,7 +162,7 @@ const page = async () => {
                     </li>
                   </ul>
                   <div className="mt-8 -pb-6">
-                    {/* <Link
+                    <Link
                       href={
                         "https://releases.dumpsarena.com/DumpsArenaTestEngine.zip"
                       }
@@ -172,7 +172,7 @@ const page = async () => {
                       <b style={{ textAlign: "center" }}>
                         Download for windows (.zip)
                       </b>
-                    </Link> */}
+                    </Link>
                     <Link
                       type="button"
                       href={
