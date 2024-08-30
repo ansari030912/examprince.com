@@ -1,7 +1,7 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable react/no-unescaped-entities */
-/* eslint-disable @next/next/no-img-element */
 "use client";
+/* eslint-disable @next/next/no-img-element */
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useState, useEffect } from "react";
 import withAuth from "@/app/auth/RouterAuth";
 import { X_API_Key } from "@/app/URL's/Api_X_Key";
 import { Base_URL } from "@/app/URL's/Base_URL";
@@ -9,33 +9,24 @@ import {
   Box,
   Button,
   Card,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogTitle,
-  Divider,
-  IconButton,
-  InputAdornment,
-  TextField,
-  Tooltip,
   CircularProgress,
-  Icon,
-  Pagination,
+  IconButton,
+  Tooltip,
+  Grid,
+  Typography,
 } from "@mui/material";
 import axios from "axios";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
 
 const UnlimitedPDFPage = ({ params }) => {
   const router = useRouter();
 
+  const [bannerUrl, setBannerUrl] = useState({}); // Define bannerUrl state
   const [unlimitedTeAccess, setUnlimitedTeAccess] = useState();
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(10); // Items to display per page
   const [totalPages, setTotalPages] = useState(0);
-
-  const [bannerUrl, setBannerUrl] = useState({});
   const [loading, setLoading] = useState(false);
   const [selectedLetter, setSelectedLetter] = useState("A");
   const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
@@ -69,10 +60,6 @@ const UnlimitedPDFPage = ({ params }) => {
       console.error("Error:", error.message);
       setLoading(false);
     }
-  };
-
-  const handleCloseDialog = () => {
-    setDialogOpen(false);
   };
 
   const handleNextPage = () => {
@@ -259,128 +246,117 @@ const UnlimitedPDFPage = ({ params }) => {
         <section class="pb-4 bg-blueGray-50">
           <div class="container mx-auto">
             <div class="pt-14 px-8 pb-12 bg-white rounded-5xl">
-              <div class="overflow-x-auto">
-                <div class="inline-block w-full min-w-max overflow-hidden">
-                  {selectedVendors?.map((vendor, index) => (
-                    <div key={index}>
-                      <div className="mb-1 mt-3 text-2xl pl-5 py-4 font-bold tracking-tight text-blue-700">
-                        {vendor.vendor_title}
-                      </div>
-                      <Card
+              {selectedVendors?.map((vendor, index) => (
+                <div key={index}>
+                  <div className="mb-1 mt-3 text-2xl pl-5 py-4 font-bold tracking-tight text-blue-700">
+                    {vendor.vendor_title}
+                  </div>
+                  <Card
+                    sx={{
+                      padding: "15px",
+                      borderRadius: "10px",
+                      boxShadow: "inset 0px 0px 8px rgba(0, 0, 0, 0.5)",
+                      marginBottom: "20px",
+                    }}
+                  >
+                    {vendor?.exams.map((exam, index) => (
+                      <Grid
+                        container
+                        key={index}
+                        spacing={2}
                         sx={{
-                          padding: "15px",
-                          borderRadius: "10px",
-                          boxShadow:
-                            "inset 0px 0px 8px rgba(0, 0, 0, 0.5)",
+                          padding: "16px",
+                          borderBottom:
+                            index !== vendor.exams.length - 1
+                              ? "1px solid #e0e0e0"
+                              : "none",
                         }}
                       >
-                        <table class="table-auto w-full">
-                          <thead>
-                            <tr>
-                              <th class="pb-2 text-base pl-5 text-body text-left text-opacity-40 font-heading font-semibold uppercase">
-                                <b>{vendor.vendor_title}</b>
-                              </th>
-                              <th class="pb-2 text-base text-body text-center text-opacity-40 font-heading font-semibold uppercase">
-                                Question & Answer
-                              </th>
-                              <th class="pb-2 text-base text-body text-right pr-4 text-opacity-40 font-heading font-semibold uppercase">
-                                Downloads
-                              </th>
-                            </tr>
-                          </thead>
+                        <Grid
+                          item
+                          xs={12}
+                          md={7}
+                          display="flex"
+                          flexDirection="column"
+                          justifyContent="center"
+                        >
+                          <Typography
+                            variant="body1"
+                            className="text-blue-600"
+                            fontWeight="bold"
+                          >
+                            {exam.exam_code}
+                          </Typography>
+                          <Typography
+                            variant="body2"
+                            className="text-green-500"
+                            fontWeight="bold"
+                            sx={{ marginTop: "4px" }}
+                          >
+                            {exam.exam_name}
+                          </Typography>
+                        </Grid>
 
-                          <tbody className="mt-4">
-                            {vendor?.exams.map((exam, index) => (
-                              <tr key={index} style={{ borderRadius: "4px" }}>
-                                <td class="p-0">
-                                  <div
-                                    class={
-                                      index % 2 === 0
-                                        ? "flex items-center pl-4 pr-4 h-20 bg-blueGray-50 border-l border-t border-b border-gray-100 bg-gray-50 rounded-tl-2xl rounded-bl-2xl"
-                                        : "flex items-center pl-4 pr-4 h-20"
-                                    }
+                        <Grid
+                          item
+                          xs={12}
+                          md={5}
+                          className=" flex justify-between"
+                        >
+                          <div className="flex flex-col justify-center">
+                            <Typography
+                              variant="body1"
+                              className="text-red-500 font-bold"
+                              sx={{
+                                textAlign: {
+                                  xs: "center",
+                                  md: "left",
+                                },
+                                marginBottom: {
+                                  xs: "8px",
+                                  md: "0",
+                                },
+                              }}
+                            >
+                              {exam.exam_questions} <span className="text-gray-500">Questions</span>
+                            </Typography>
+                          </div>
+                          <div className="flex justify-end">
+                            <Tooltip title="Download Premium PDF File">
+                              <Link
+                                href={`https://certsgang.com${exam.download_url}`}
+                              >
+                                <IconButton className="bg-green-400 h-10 w-10 hover:bg-green-500">
+                                  <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="2em"
+                                    height="2em"
+                                    viewBox="0 0 32 32"
                                   >
-                                    <div class="flex items-center">
-                                      <img
-                                        class="mr-4 h-8"
-                                        src="/placeholder-icon2.png"
-                                        alt=""
-                                      />
-                                      <div class="flex-shrink-1">
-                                        <h4 class="font-heading text-wrap font-medium leading-4 text-lg">
-                                          <span className="text-blue-600 text-base">
-                                            {exam.exam_code}
-                                          </span>
-                                          <br />
-                                          <span className="text-green-500 mt-2 text-xs">
-                                            {exam.exam_name}
-                                          </span>
-                                        </h4>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </td>
-                                <td class="p-0">
-                                  <div
-                                    class={
-                                      index % 2 === 0
-                                        ? "flex items-center justify-center p-5 h-20 text-center bg-blueGray-50 border-t border-b border-gray-100 bg-gray-50"
-                                        : "flex items-center justify-center p-5 h-20 text-center"
-                                    }
-                                  >
-                                    <span class="font-heading text-darkBlueGray-400 text-lg">
-                                      {exam.exam_questions}
-                                    </span>
-                                  </div>
-                                </td>
-
-                                <td class="p-0">
-                                  <div
-                                    class={
-                                      index % 2 === 0
-                                        ? "flex items-center justify-end pr-6 h-20 text-right bg-blueGray-50 border-t border-b border-r border-gray-100 bg-gray-50 rounded-tr-2xl rounded-br-2xl"
-                                        : "flex items-center justify-end pr-6 h-20 text-right bg-blueGray-50"
-                                    }
-                                  >
-                                    <div class="flex justify-end">
-                                      <Tooltip title="Download Premium PDF File">
-                                        <Link
-                                          href={`https://certsgang.com${exam.download_url}`}
-                                        >
-                                          <IconButton className="bg-green-400 h-10 w-10 hover:bg-green-500 mr-1">
-                                            <svg
-                                              xmlns="http://www.w3.org/2000/svg"
-                                              width="2em"
-                                              height="2em"
-                                              viewBox="0 0 32 32"
-                                            >
-                                              <path
-                                                fill="white"
-                                                d="M6 3v26h20V9.6l-.3-.3l-6-6l-.3-.3zm2 2h10v6h6v16H8zm12 1.4L22.6 9H20zM15 13v5h-3l4 4l4-4h-3v-5zm-3 10v2h8v-2z"
-                                              />
-                                            </svg>
-                                          </IconButton>
-                                        </Link>
-                                      </Tooltip>
-                                    </div>
-                                  </div>
-                                </td>
-                              </tr>
-                            ))}
-                          </tbody>
-                        </table>
-                      </Card>
-                    </div>
-                  ))}
+                                    <path
+                                      fill="white"
+                                      d="M6 3v26h20V9.6l-.3-.3l-6-6l-.3-.3zm2 2h10v6h6v16H8zm12 1.4L22.6 9H20zM15 13v5h-3l4 4l4-4h-3v-5zm-3 10v2h8v-2z"
+                                    />
+                                  </svg>
+                                </IconButton>
+                              </Link>
+                            </Tooltip>
+                          </div>
+                        </Grid>
+                      </Grid>
+                    ))}
+                  </Card>
                 </div>
-                <hr />
-              </div>
+              ))}
 
               {/* Pagination Controls */}
               <div className="flex justify-between items-center mt-4">
                 <div>
                   Showing {startIndex + 1} to{" "}
-                  {Math.min(startIndex + itemsPerPage, unlimitedTeAccess?.vendors.length)}{" "}
+                  {Math.min(
+                    startIndex + itemsPerPage,
+                    unlimitedTeAccess?.vendors.length
+                  )}{" "}
                   of {unlimitedTeAccess?.vendors.length} exams
                 </div>
                 <div className="flex gap-2">

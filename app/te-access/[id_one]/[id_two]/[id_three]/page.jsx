@@ -61,7 +61,7 @@ const TeAccess = ({ params }) => {
   }, [params.id_one, params.id_two, params.id_three]);
 
   return (
-    <div className="container my-20 mx-auto">
+    <div className="container px-4 my-20 mx-auto">
       <Snackbar
         open={snackbarOpen}
         autoHideDuration={3000}
@@ -90,7 +90,7 @@ const TeAccess = ({ params }) => {
         className="container mx-auto"
         sx={{
           mt: "10px",
-          p: "20px",
+          py: "20px",
           // boxShadow: "inset 0px 0px 8px rgba(0, 0, 0, 0.5)",
           borderRadius: "4px",
         }}
@@ -128,7 +128,7 @@ const TeAccess = ({ params }) => {
             marginTop: "10px",
             // boxShadow: "0px 0px 8px rgba(0, 0, 0, 0.5)",
             // borderRadius: "12px",
-            paddingX: "20px",
+            paddingY: "20px",
             bgcolor: "white",
           }}
         >
@@ -231,7 +231,7 @@ const TeAccess = ({ params }) => {
         )} */}
       </Box>
       <Box
-        className="container mx-auto bg-green-100"
+        className="container mx-auto  bg-green-100"
         sx={{
           color: "white",
           padding: "15px",

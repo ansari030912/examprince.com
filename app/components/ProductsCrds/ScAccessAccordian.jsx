@@ -90,7 +90,7 @@ const ScAccessAccordian = ({ data }) => {
                 <table className="min-w-full">
                   <thead>
                     <tr>
-                      <th className="px-6 py-3 border-b-2 border-gray-300 text-left leading-4 text-gray-500 tracking-wider">
+                      <th className="px-6 py-3 hidden lg:table-cell border-b-2 border-gray-300 text-left leading-4 text-gray-500 tracking-wider">
                         No
                       </th>
                       <th className="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-gray-500 tracking-wider">
@@ -111,7 +111,7 @@ const ScAccessAccordian = ({ data }) => {
                     return (
                       <tbody key={index} className="bg-white">
                         <tr onClick={() => handleLectureClick(lecture)}>
-                          <td className="px-6 py-2 whitespace-no-wrap border-b border-gray-500">
+                          <td className="px-6 py-2 hidden lg:table-cell whitespace-no-wrap border-b border-gray-500">
                             <div className="flex items-center">
                               <div>
                                 <div className="text-md leading-5 text-gray-800">
@@ -120,8 +120,8 @@ const ScAccessAccordian = ({ data }) => {
                               </div>
                             </div>
                           </td>
-                          <td className="px-6 py-2 whitespace-no-wrap border-b border-gray-500 text-blue-900 text-md leading-5 cursor-pointer">
-                            {lecture_title}
+                          <td className="px-6 py-2  whitespace-no-wrap border-b border-gray-500 text-blue-900 text-md leading-5 cursor-pointer">
+                            <span className="lg:hidden ">{lecture_seq}. </span>{lecture_title}
                           </td>
                           <td className="px-6 py-2 whitespace-no-wrap border-b text-blue-900 border-gray-500 text-md text-right leading-5">
                             <span className="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
