@@ -1,6 +1,7 @@
 "use client";
 import { Icon } from "@iconify/react";
 import { Snackbar, SnackbarContent } from "@mui/material";
+import Link from "next/link";
 import React, { useState } from "react";
 
 const UnlimitedPage = ({ data }) => {
@@ -52,9 +53,12 @@ const UnlimitedPage = ({ data }) => {
                 Unlimited Test Engine & PDF Download Access
               </h1>
 
-              <p className="text-base font-bold text-gray-500">
+              <Link
+                href={"/all-te-exams-list"}
+                className="text-base font-bold text-blue-500 hover:underline"
+              >
                 Get Unlimited Access to all DumpsArena PREMIUM files!
-              </p>
+              </Link>
             </div>
           </div>
           <div className="mb-6 text-gray-400 text-lg font-semibold">

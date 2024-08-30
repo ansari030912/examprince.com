@@ -64,7 +64,7 @@ const page = async ({ searchParams }) => {
           }),
         }}
       />
-      <section class="pt-6 pb-6 px-6 bg-white">
+      <section className="pt-6 pb-6 px-6 bg-white">
         <Link href={imageUrl?.banner_link} className="flex justify-center mb-4">
           <img src={imageUrl?.banner_src} alt={imageUrl?.banner_website} />
         </Link>

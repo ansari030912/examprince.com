@@ -110,7 +110,7 @@ const CertificationExamPage = async ({ params }) => {
       />
       {data._has_multiple_exams && (
         <>
-          <section class="pt-6 pb-6 px-6 bg-white">
+          <section className="pt-6 pb-6 px-6 bg-white">
             <Link
               href={imageUrl?.banner_link}
               className="flex justify-center mb-4"
@@ -119,17 +119,17 @@ const CertificationExamPage = async ({ params }) => {
             </Link>
           </section>
           <ExamDetailCard />
-          <section class="my-10 px-6 bg-white">
+          <section className="my-10 px-6 bg-white">
             <div className="container mx-auto">
-              <div class="flex flex-wrap -m-4 mb-12">
-                <div class="w-full lg:w-4/12 p-12">
-                  <div class="flex items-end gap-2">
+              <div className="flex flex-wrap -m-4 mb-12">
+                <div className="w-full lg:w-4/12 p-12">
+                  <div className="flex items-end gap-2">
                     <span
                       style={{ display: "flex", justifyContent: "center" }}
-                      class="group flex-1"
+                      className="group flex-1"
                     >
                       <div
-                        class="relative xl:hidden overflow-hidden rounded-xl flex flex-col justify-center transition duration-200"
+                        className="relative xl:hidden overflow-hidden rounded-xl flex flex-col justify-center transition duration-200"
                         style={{
                           height: "300px",
                           width: "300px",
@@ -137,13 +137,13 @@ const CertificationExamPage = async ({ params }) => {
                       >
                         <img
                           style={{ width: "300px", height: "300px" }}
-                          class="absolute inset-0 rounded-xl transform group-hover:scale-105 transition duration-200"
+                          className="absolute inset-0 rounded-xl transform group-hover:scale-105 transition duration-200"
                           src="/package-small-min_optimized.png"
                           alt=""
                         />
                       </div>
                       <div
-                        class="relative hidden xl:inline-flex overflow-hidden rounded-xl flex-col justify-center transition duration-200"
+                        className="relative hidden xl:inline-flex overflow-hidden rounded-xl flex-col justify-center transition duration-200"
                         style={{
                           height: "300px",
                           width: "420px",
@@ -151,7 +151,7 @@ const CertificationExamPage = async ({ params }) => {
                       >
                         <img
                           style={{ width: "420px", height: "300px" }}
-                          class="absolute inset-0 rounded-xl transform group-hover:scale-105 transition duration-200"
+                          className="absolute inset-0 rounded-xl transform group-hover:scale-105 transition duration-200"
                           src="/package-small-min_optimized.png"
                           alt=""
                         />
@@ -159,9 +159,9 @@ const CertificationExamPage = async ({ params }) => {
                     </span>
                   </div>
                 </div>
-                <div class="w-full lg:w-8/12 p-4">
-                  <div class="p-2 md:p-10">
-                    <h2 class="font-heading font-bold text-gray-600 uppercase text-3xl mb-2 max-w-2xl">
+                <div className="w-full lg:w-8/12 p-4">
+                  <div className="p-2 md:p-10">
+                    <h2 className="font-heading font-bold text-gray-600 uppercase text-3xl mb-2 max-w-2xl">
                       {data.cert_title} Certification Provided by IT
                       Professionals
                     </h2>
@@ -170,11 +170,11 @@ const CertificationExamPage = async ({ params }) => {
                       style={{ border: "2px solid #F5F6FA" }}
                     />
 
-                    <p class="text-gray-500 text-base font-semibold  max-w-xl">
+                    <p className="text-gray-500 text-base font-semibold  max-w-xl">
                       Reliable Study Materials & Testing Engine for{" "}
                       {data.cert_full_name} Certification Success!
                     </p>
-                    <p class="text-gray-500 text-base font-semibold  max-w-xl">
+                    <p className="text-gray-500 text-base font-semibold  max-w-xl">
                       Exams Provider :{" "}
                       <Link
                         href={`/exam-provider/${data.cert_multiple_exams[0].exam_vendor_perma}`}
@@ -190,19 +190,19 @@ const CertificationExamPage = async ({ params }) => {
                         </span>
                       </Link>
                     </p>
-                    <p class="text-gray-500 text-base font-semibold mb-6 max-w-xl">
+                    <p className="text-gray-500 text-base font-semibold mb-6 max-w-xl">
                       Certification Exam Name :{" "}
                       <span className="text-sky-500">
                         {data.cert_full_name}
                       </span>
                     </p>
-                    <div class="flex flex-wrap items-center gap-2 ">
-                      <div class="flex gap-1">
+                    <div className="flex flex-wrap items-center gap-2 ">
+                      <div className="flex gap-1">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           width="24"
                           height="24"
-                          viewbox="0 0 24 24"
+                          viewBox="0 0 24 24"
                           fill="none"
                         >
                           <path
@@ -214,7 +214,7 @@ const CertificationExamPage = async ({ params }) => {
                           xmlns="http://www.w3.org/2000/svg"
                           width="24"
                           height="24"
-                          viewbox="0 0 24 24"
+                          viewBox="0 0 24 24"
                           fill="none"
                         >
                           <path
@@ -226,7 +226,7 @@ const CertificationExamPage = async ({ params }) => {
                           xmlns="http://www.w3.org/2000/svg"
                           width="24"
                           height="24"
-                          viewbox="0 0 24 24"
+                          viewBox="0 0 24 24"
                           fill="none"
                         >
                           <path
@@ -238,7 +238,7 @@ const CertificationExamPage = async ({ params }) => {
                           xmlns="http://www.w3.org/2000/svg"
                           width="24"
                           height="24"
-                          viewbox="0 0 24 24"
+                          viewBox="0 0 24 24"
                           fill="none"
                         >
                           <path
@@ -250,7 +250,7 @@ const CertificationExamPage = async ({ params }) => {
                           xmlns="http://www.w3.org/2000/svg"
                           width="24"
                           height="24"
-                          viewbox="0 0 24 24"
+                          viewBox="0 0 24 24"
                           fill="none"
                         >
                           <path
@@ -259,7 +259,7 @@ const CertificationExamPage = async ({ params }) => {
                           ></path>
                         </svg>
                       </div>
-                      <span class="text-sm font-semibold">
+                      <span className="text-sm font-semibold">
                         5.0 ({data.cert_id} reviews)
                       </span>
                     </div>
@@ -276,22 +276,22 @@ const CertificationExamPage = async ({ params }) => {
       )}
       {data?._has_multiple_exams === false && (
         <>
-          <section class="pt-6 pb-6 px-6 bg-white">
+          <section className="pt-6 pb-6 px-6 bg-white">
             <div className="flex justify-center mb-4">
               <img src="/MEGASALE DA-min.png" alt="" />
             </div>
           </section>
-          <section class="pt-6 px-6 bg-white">
+          <section className="pt-6 px-6 bg-white">
             <div className="container mx-auto">
-              <div class="flex flex-wrap -m-4 mb-12">
-                <div class="w-full lg:w-4/12 p-12">
-                  <div class="flex items-end gap-2">
+              <div className="flex flex-wrap -m-4 mb-12">
+                <div className="w-full lg:w-4/12 p-12">
+                  <div className="flex items-end gap-2">
                     <span
                       style={{ display: "flex", justifyContent: "center" }}
-                      class="group flex-1"
+                      className="group flex-1"
                     >
                       <div
-                        class="relative xl:hidden overflow-hidden rounded-xl flex flex-col justify-center transition duration-200"
+                        className="relative xl:hidden overflow-hidden rounded-xl flex flex-col justify-center transition duration-200"
                         style={{
                           height: "300px",
                           width: "300px",
@@ -299,13 +299,13 @@ const CertificationExamPage = async ({ params }) => {
                       >
                         <img
                           style={{ width: "300px", height: "300px" }}
-                          class="absolute inset-0 rounded-xl transform group-hover:scale-105 transition duration-200"
+                          className="absolute inset-0 rounded-xl transform group-hover:scale-105 transition duration-200"
                           src="/package-small-min_optimized.png"
                           alt=""
                         />
                       </div>
                       <div
-                        class="relative hidden xl:inline-flex overflow-hidden rounded-xl flex-col justify-center transition duration-200"
+                        className="relative hidden xl:inline-flex overflow-hidden rounded-xl flex-col justify-center transition duration-200"
                         style={{
                           height: "300px",
                           width: "420px",
@@ -313,7 +313,7 @@ const CertificationExamPage = async ({ params }) => {
                       >
                         <img
                           style={{ width: "420px", height: "300px" }}
-                          class="absolute inset-0 rounded-xl transform group-hover:scale-105 transition duration-200"
+                          className="absolute inset-0 rounded-xl transform group-hover:scale-105 transition duration-200"
                           src="/package-small-min_optimized.png"
                           alt=""
                         />
@@ -321,9 +321,9 @@ const CertificationExamPage = async ({ params }) => {
                     </span>
                   </div>
                 </div>
-                <div class="w-full lg:w-8/12 p-4">
-                  <div class="p-5 md:p-10">
-                    <h2 class="font-heading uppercase text-3xl mb-2 max-w-xl">
+                <div className="w-full lg:w-8/12 p-4">
+                  <div className="p-5 md:p-10">
+                    <h2 className="font-heading uppercase text-3xl mb-2 max-w-xl">
                       {data.cert_title
                         ? `${data.cert_title} Certification Provided by IT Professionals`
                         : "Exam Questions N/A"}
@@ -333,11 +333,11 @@ const CertificationExamPage = async ({ params }) => {
                       style={{ border: "2px solid #F5F6FA" }}
                     />
 
-                    <p class="text-gray-500 text-base font-semibold  max-w-xl">
+                    <p className="text-gray-500 text-base font-semibold  max-w-xl">
                       Reliable Study Materials & Testing Engine for{" "}
                       {data.cert_full_name} Certification Success!
                     </p>
-                    <p class="text-gray-500 text-base font-semibold  max-w-xl">
+                    <p className="text-gray-500 text-base font-semibold  max-w-xl">
                       Exams Provider :{" "}
                       <Link href={`/exam-provider/${data?.vendor_perma}`}>
                         <span
@@ -351,19 +351,19 @@ const CertificationExamPage = async ({ params }) => {
                         </span>
                       </Link>
                     </p>
-                    <p class="text-gray-500 text-base font-semibold mb-6 max-w-xl">
+                    <p className="text-gray-500 text-base font-semibold mb-6 max-w-xl">
                       Certification Exam Name :{" "}
                       <span className="text-sky-500">
                         {data.cert_full_name}
                       </span>
                     </p>
-                    <div class="flex flex-wrap items-center gap-2 ">
-                      <div class="flex gap-1">
+                    <div className="flex flex-wrap items-center gap-2 ">
+                      <div className="flex gap-1">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           width="24"
                           height="24"
-                          viewbox="0 0 24 24"
+                          viewBox="0 0 24 24"
                           fill="none"
                         >
                           <path
@@ -375,7 +375,7 @@ const CertificationExamPage = async ({ params }) => {
                           xmlns="http://www.w3.org/2000/svg"
                           width="24"
                           height="24"
-                          viewbox="0 0 24 24"
+                          viewBox="0 0 24 24"
                           fill="none"
                         >
                           <path
@@ -387,7 +387,7 @@ const CertificationExamPage = async ({ params }) => {
                           xmlns="http://www.w3.org/2000/svg"
                           width="24"
                           height="24"
-                          viewbox="0 0 24 24"
+                          viewBox="0 0 24 24"
                           fill="none"
                         >
                           <path
@@ -399,7 +399,7 @@ const CertificationExamPage = async ({ params }) => {
                           xmlns="http://www.w3.org/2000/svg"
                           width="24"
                           height="24"
-                          viewbox="0 0 24 24"
+                          viewBox="0 0 24 24"
                           fill="none"
                         >
                           <path
@@ -411,7 +411,7 @@ const CertificationExamPage = async ({ params }) => {
                           xmlns="http://www.w3.org/2000/svg"
                           width="24"
                           height="24"
-                          viewbox="0 0 24 24"
+                          viewBox="0 0 24 24"
                           fill="none"
                         >
                           <path
@@ -420,7 +420,7 @@ const CertificationExamPage = async ({ params }) => {
                           ></path>
                         </svg>
                       </div>
-                      <span class="text-sm font-semibold">0 (0 reviews)</span>
+                      <span className="text-sm font-semibold">0 (0 reviews)</span>
                     </div>
                   </div>
                 </div>

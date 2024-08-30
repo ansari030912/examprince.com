@@ -6,7 +6,6 @@ import { useState } from "react";
 
 const HotExamCards = ({ data }) => {
   const [toggle, setToggle] = useState(false);
-  console.log("🚀 ~ HotExamCards ~ toggle:", toggle);
   const [selectedView, setSelectedView] = useState("month");
 
   const renderRows = (items) => {

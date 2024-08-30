@@ -127,23 +127,23 @@ const AllTeExams = () => {
               </div>
             )}
           </section>
-          <section class="px-6 bg-white">
-            <div class="flex flex-wrap -m-4">
-              <div class="w-full lg:w-4/12 p-12">
-                <div class="flex items-end gap-6">
+          <section className="px-6 bg-white">
+            <div className="flex flex-wrap -m-4">
+              <div className="w-full lg:w-4/12 p-12">
+                <div className="flex items-end gap-6">
                   <span
                     style={{ display: "flex", justifyContent: "center" }}
-                    class="group flex-1"
+                    className="group flex-1"
                   >
                     <div
-                      class="relative overflow-hidden rounded-xl transition duration-200"
+                      className="relative overflow-hidden rounded-xl transition duration-200"
                       style={{
                         height: "270px",
                         width: "330px",
                       }}
                     >
                       <img
-                        class="absolute inset-0 rounded-xl w-full h-full transform group-hover:scale-105 transition duration-200"
+                        className="absolute inset-0 rounded-xl w-full h-full transform group-hover:scale-105 transition duration-200"
                         src="/package-small-min_optimized.png"
                         alt=""
                       />
@@ -151,30 +151,30 @@ const AllTeExams = () => {
                   </span>
                 </div>
               </div>
-              <div class="w-full lg:w-8/12 p-4">
-                <div class="p-5 pt-20">
-                  <h2 class="font-heading uppercase text-3xl mb-2 max-w-xl">
+              <div className="w-full lg:w-8/12 p-4">
+                <div className="p-5 pt-20">
+                  <h2 className="font-heading uppercase text-3xl mb-2 max-w-xl">
                     Test Engine All Exams
                   </h2>
                   <hr
                     className="mb-4"
                     style={{ border: "2px solid #F5F6FA" }}
                   />
-                  <p class="text-gray-500 text-base mt-2 font-semibold max-w-xl">
+                  <p className="text-gray-500 text-base mt-2 font-semibold max-w-xl">
                     When you buy Test Engine Unlimited Access you will get all
                     vendors exams access
                   </p>
 
                   {/* 
-                  <p class="text-green-500 text-base mt-2 font-semibold max-w-xl">
+                  <p className="text-green-500 text-base mt-2 font-semibold max-w-xl">
                   Monthly Download Limit:
                   </p> */}
 
-                  <p class="text-red-500 text-base mt-2 font-semibold mb-6 max-w-xl">
+                  <p className="text-red-500 text-base mt-2 font-semibold mb-6 max-w-xl">
                     You can Easily Serach Vendors Exams by their Name First
                     Alphabet.
                   </p>
-                  <p class="text-blue-500 text-base mt-2 font-semibold max-w-xl">
+                  <p className="text-blue-500 text-base mt-2 font-semibold max-w-xl">
                     Currently Searched Vendors Exams with Letter :{" "}
                     <span className="text-green-500">{selectedLetter}</span>
                   </p>
@@ -197,7 +197,7 @@ const AllTeExams = () => {
                 variant={selectedLetter === letter ? "contained" : "outlined"}
                 onClick={() => handleLetterClick(letter)}
                 sx={{
-                  margin: "0 5px",
+                  margin: "5px 5px",
                   padding: "5px 15px",
                   minWidth: "40px",
                   fontSize: "16px",

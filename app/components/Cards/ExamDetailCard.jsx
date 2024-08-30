@@ -2,14 +2,14 @@
 
 const ExamDetailCard = () => {
   return (
-    <section class="py-6 bg-gray-50">
-      <div class="container px-4 mx-auto">
-        <div class="max-w-6xl mx-auto">
-          <div class="px-6 bg-white border-2 border-black rounded-md shadow">
-            <div class="flex flex-wrap items-center justify-between -mx-3">
-              <div class="w-full md:w-1/2 xl:w-auto px-3">
-                <div class="flex py-5 items-center">
-                  <span class="inline-block mr-3">
+    <section className="py-6 bg-gray-50">
+      <div className="container px-4 mx-auto">
+        <div className="max-w-6xl mx-auto">
+          <div className="px-6 bg-white border-2 border-black rounded-md shadow">
+            <div className="flex flex-wrap items-center justify-between -mx-3">
+              <div className="w-full md:w-1/2 xl:w-auto px-3">
+                <div className="flex py-5 items-center">
+                  <span className="inline-block mr-3">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="32"
@@ -22,16 +22,16 @@ const ExamDetailCard = () => {
                       />
                     </svg>
                   </span>
-                  <h4 class="font-bold">Accurate Question Answer</h4>
+                  <h4 className="font-bold">Accurate Question Answer</h4>
                 </div>
               </div>
-              <div class="w-full md:w-1/2 xl:w-auto px-3">
-                <div class="flex py-5 items-center">
-                  <span class="inline-block mr-3">
+              <div className="w-full md:w-1/2 xl:w-auto px-3">
+                <div className="flex py-5 items-center">
+                  <span className="inline-block mr-3">
                     <svg
                       width="32"
                       height="32"
-                      viewbox="0 0 32 32"
+                      viewBox="0 0 32 32"
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg"
                     >
@@ -45,16 +45,16 @@ const ExamDetailCard = () => {
                       ></path>
                     </svg>
                   </span>
-                  <h4 class="font-bold">Secure Shopping Guarantee</h4>
+                  <h4 className="font-bold">Secure Shopping Guarantee</h4>
                 </div>
               </div>
-              <div class="w-full md:w-1/2 xl:w-auto px-3">
-                <div class="flex py-5 items-center">
-                  <span class="inline-block mr-3">
+              <div className="w-full md:w-1/2 xl:w-auto px-3">
+                <div className="flex py-5 items-center">
+                  <span className="inline-block mr-3">
                     <svg
                       width="32"
                       height="32"
-                      viewbox="0 0 32 32"
+                      viewBox="0 0 32 32"
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg"
                     >
@@ -68,16 +68,16 @@ const ExamDetailCard = () => {
                       ></path>
                     </svg>
                   </span>
-                  <h4 class="font-bold">100% Customer Satisfaction</h4>
+                  <h4 className="font-bold">100% Customer Satisfaction</h4>
                 </div>
               </div>
-              <div class="w-full md:w-1/2 xl:w-auto px-3">
-                <div class="flex py-5 items-center">
-                  <span class="inline-block mr-3">
+              <div className="w-full md:w-1/2 xl:w-auto px-3">
+                <div className="flex py-5 items-center">
+                  <span className="inline-block mr-3">
                     <svg
                       width="32"
                       height="32"
-                      viewbox="0 0 32 32"
+                      viewBox="0 0 32 32"
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg"
                     >
@@ -87,7 +87,7 @@ const ExamDetailCard = () => {
                       ></path>
                     </svg>
                   </span>
-                  <h4 class="font-bold">Product Guarantee</h4>
+                  <h4 className="font-bold">Product Guarantee</h4>
                 </div>
               </div>
             </div>

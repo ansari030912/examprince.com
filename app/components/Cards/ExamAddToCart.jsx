@@ -9,17 +9,17 @@ import ImageCarousel from "../ImagesCaresol/ImageCarousel";
 const ExamAddToCart = ({ examData }) => {
   return (
     <>
-      <section class="pt-6 pb-6 px-6 bg-white">
+      <section className="pt-6 pb-6 px-6 bg-white">
         <div className="container mx-auto">
-          <div class="flex flex-wrap -m-4 mb-20">
-            <div class="w-full lg:w-4/12 p-12">
-              <div class="flex items-end gap-2">
+          <div className="flex flex-wrap -m-4 mb-20">
+            <div className="w-full lg:w-4/12 p-12">
+              <div className="flex items-end gap-2">
                 <span
                   style={{ display: "flex", justifyContent: "center" }}
-                  class="group flex-1"
+                  className="group flex-1"
                 >
                   <div
-                    class="relative xl:hidden overflow-hidden rounded-xl flex flex-col justify-center transition duration-200"
+                    className="relative xl:hidden overflow-hidden rounded-xl flex flex-col justify-center transition duration-200"
                     style={{
                       height: "300px",
                       width: "300px",
@@ -27,13 +27,13 @@ const ExamAddToCart = ({ examData }) => {
                   >
                     <img
                       style={{ width: "300px", height: "300px" }}
-                      class="absolute inset-0 rounded-xl transform group-hover:scale-105 transition duration-200"
+                      className="absolute inset-0 rounded-xl transform group-hover:scale-105 transition duration-200"
                       src="/package-small-min_optimized.png"
                       alt=""
                     />
                   </div>
                   <div
-                    class="relative hidden xl:inline-flex overflow-hidden rounded-xl flex-col justify-center transition duration-200"
+                    className="relative hidden xl:inline-flex overflow-hidden rounded-xl flex-col justify-center transition duration-200"
                     style={{
                       height: "300px",
                       width: "420px",
@@ -41,7 +41,7 @@ const ExamAddToCart = ({ examData }) => {
                   >
                     <img
                       style={{ width: "420px", height: "300px" }}
-                      class="absolute inset-0 rounded-xl transform group-hover:scale-105 transition duration-200"
+                      className="absolute inset-0 rounded-xl transform group-hover:scale-105 transition duration-200"
                       src="/package-small-min_optimized.png"
                       alt=""
                     />
@@ -49,26 +49,26 @@ const ExamAddToCart = ({ examData }) => {
                 </span>
               </div>
             </div>
-            <div class="w-full lg:w-8/12 p-4">
-              <div class="p-5 md:p-10">
-                <h2 class="font-heading font-bold text-gray-600 uppercase text-3xl mb-2 max-w-4xl">
+            <div className="w-full lg:w-8/12 p-4">
+              <div className="p-5 md:p-10">
+                <h2 className="font-heading font-bold text-gray-600 uppercase text-3xl mb-2 max-w-4xl">
                   {examData.exam_code} - {examData.exam_vendor_title} -{" "}
                   {examData.exam_title}
                 </h2>
-                <p class="text-gray-500 text-base font-bold max-w-2xl mb-2">
+                <p className="text-gray-500 text-base font-bold max-w-2xl mb-2">
                   Everything you need to prepare, learn & pass your
                   certification exam easily. 90 days free updates. First attempt
                   100% success.
                 </p>
                 <hr className="mb-4" style={{ border: "2px solid #F5F6FA" }} />
-                <p class="text-gray-500 text-base font-semibold max-w-xl">
+                <p className="text-gray-500 text-base font-semibold max-w-xl">
                   Last Update :{" "}
                   {moment(examData?.exam_update_date).format("LL")}
                 </p>
-                <p class="text-gray-500 text-base font-semibold  max-w-xl">
+                <p className="text-gray-500 text-base font-semibold  max-w-xl">
                   Latest Question & Answers : {examData.exam_questions}
                 </p>
-                <p class="text-gray-500 text-base font-semibold  max-w-xl">
+                <p className="text-gray-500 text-base font-semibold  max-w-xl">
                   Exam Question Provider :{" "}
                   <Link href={`/exam-provider/${examData?.exam_vendor_perma}`}>
                     <span
@@ -82,7 +82,7 @@ const ExamAddToCart = ({ examData }) => {
                     </span>
                   </Link>
                 </p>
-                <p class="text-gray-500 text-base font-semibold mb-6 max-w-xl">
+                <p className="text-gray-500 text-base font-semibold mb-6 max-w-xl">
                   Certification Exam Name :{" "}
                   <span
                     style={{
@@ -100,13 +100,13 @@ const ExamAddToCart = ({ examData }) => {
                     ))}
                   </span>
                 </p>
-                <div class="flex flex-wrap items-center gap-2 ">
-                  <div class="flex gap-1">
+                <div className="flex flex-wrap items-center gap-2 ">
+                  <div className="flex gap-1">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="24"
                       height="24"
-                      viewbox="0 0 24 24"
+                      viewBox="0 0 24 24"
                       fill="none"
                     >
                       <path
@@ -118,7 +118,7 @@ const ExamAddToCart = ({ examData }) => {
                       xmlns="http://www.w3.org/2000/svg"
                       width="24"
                       height="24"
-                      viewbox="0 0 24 24"
+                      viewBox="0 0 24 24"
                       fill="none"
                     >
                       <path
@@ -130,7 +130,7 @@ const ExamAddToCart = ({ examData }) => {
                       xmlns="http://www.w3.org/2000/svg"
                       width="24"
                       height="24"
-                      viewbox="0 0 24 24"
+                      viewBox="0 0 24 24"
                       fill="none"
                     >
                       <path
@@ -142,7 +142,7 @@ const ExamAddToCart = ({ examData }) => {
                       xmlns="http://www.w3.org/2000/svg"
                       width="24"
                       height="24"
-                      viewbox="0 0 24 24"
+                      viewBox="0 0 24 24"
                       fill="none"
                     >
                       <path
@@ -154,7 +154,7 @@ const ExamAddToCart = ({ examData }) => {
                       xmlns="http://www.w3.org/2000/svg"
                       width="24"
                       height="24"
-                      viewbox="0 0 24 24"
+                      viewBox="0 0 24 24"
                       fill="none"
                     >
                       <path
@@ -163,7 +163,7 @@ const ExamAddToCart = ({ examData }) => {
                       ></path>
                     </svg>
                   </div>
-                  <span class="text-sm font-bold text-gray-600">
+                  <span className="text-sm font-bold text-gray-600">
                     5.0 (7.932 reviews)
                   </span>
                 </div>

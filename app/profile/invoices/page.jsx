@@ -39,28 +39,28 @@ const InvoicePage = () => {
   };
 
   return (
-    <section class="py-8 bg-blueGray-50">
-      <div class="container px-4 mx-auto">
-        <div class="pt-14 px-8 pb-12 bg-white rounded-5xl">
-          <div class="flex flex-wrap mb-8 justify-between items-center">
-            <div class="w-full md:w-auto mb-10 md:mb-0">
-              <h3 class="text-3xl font-heading font-medium leading-10">
+    <section className="py-8 bg-blueGray-50">
+      <div className="container px-4 mx-auto">
+        <div className="pt-14 px-8 pb-12 bg-white rounded-5xl">
+          <div className="flex flex-wrap mb-8 justify-between items-center">
+            <div className="w-full md:w-auto mb-10 md:mb-0">
+              <h3 className="text-3xl font-heading font-medium leading-10">
                 Sales Invoices
               </h3>
             </div>
           </div>
-          <div class="overflow-x-auto">
-            <div class="inline-block w-full min-w-max overflow-hidden">
-              <table class="table-auto w-full">
+          <div className="overflow-x-auto">
+            <div className="inline-block w-full min-w-max overflow-hidden">
+              <table className="table-auto w-full">
                 <thead>
                   <tr>
-                    <th class="pb-8 text-sm text-body text-left text-opacity-40 font-heading font-semibold uppercase">
+                    <th className="pb-8 text-sm text-body text-left text-opacity-40 font-heading font-semibold uppercase">
                       Product
                     </th>
-                    <th class="pb-8 text-sm text-body text-center text-opacity-40 font-heading font-semibold uppercase">
+                    <th className="pb-8 text-sm text-body text-center text-opacity-40 font-heading font-semibold uppercase">
                       Ammount
                     </th>
-                    <th class="pb-8 text-sm text-body text-center text-opacity-40 font-heading font-semibold uppercase">
+                    <th className="pb-8 text-sm text-body text-center text-opacity-40 font-heading font-semibold uppercase">
                       Status
                     </th>
                   </tr>
@@ -68,7 +68,7 @@ const InvoicePage = () => {
                 <tbody>
                   {data.map((item, index) => (
                     <tr key={index} style={{ borderRadius: "4px" }}>
-                      <td class="p-0">
+                      <td className="p-0">
                         <div
                           class={
                             index % 2 === 0
@@ -76,17 +76,17 @@ const InvoicePage = () => {
                               : "flex items-center pl-4 pr-4 h-20 "
                           }
                         >
-                          <div class="flex items-center">
+                          <div className="flex items-center">
                             <img
-                              class="mr-4 h-10"
+                              className="mr-4 h-10"
                               src="/placeholder-icon4.png"
                               alt=""
                             />
-                            <div class="flex-shrink-1">
-                              <h4 class="font-heading font-medium mt-2 leading-4 text-xl">
+                            <div className="flex-shrink-1">
+                              <h4 className="font-heading font-medium mt-2 leading-4 text-xl">
                                 # {item?.invoice_id}
                               </h4>
-                              <div class="text-sm mt-3 text-darkBlueGray-400 leading-3">
+                              <div className="text-sm mt-3 text-darkBlueGray-400 leading-3">
                                 {moment(item?.invoice_date).format(
                                   "MMM DD yyyy : hh:mm A"
                                 )}
@@ -95,7 +95,7 @@ const InvoicePage = () => {
                           </div>
                         </div>
                       </td>
-                      <td class="p-0">
+                      <td className="p-0">
                         <div
                           class={
                             index % 2 === 0
@@ -103,12 +103,12 @@ const InvoicePage = () => {
                               : "flex items-center justify-center p-5 h-20 text-center"
                           }
                         >
-                          <span class="font-heading text-darkBlueGray-400  text-lg">
+                          <span className="font-heading text-darkBlueGray-400  text-lg">
                             $ {item?.invoice_amount}
                           </span>
                         </div>
                       </td>
-                      <td class="p-0">
+                      <td className="p-0">
                         <div
                           class={
                             index % 2 === 0
@@ -116,7 +116,7 @@ const InvoicePage = () => {
                               : "flex items-center justify-center p-5 h-20 text-center"
                           }
                         >
-                          <span class="py-1 px-3 text-sm text-green-900 font-medium bg-green-200 rounded-full">
+                          <span className="py-1 px-3 text-sm text-green-900 font-medium bg-green-200 rounded-full">
                             {item.invoice_paid ? "Paid" : "Unpaid"}
                           </span>
                         </div>

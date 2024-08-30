@@ -33,25 +33,16 @@ const CartCard = () => {
   const [snackbarOpen, setSnackbarOpen] = useState(false);
   const [snackbarMessage, setSnackbarMessage] = useState("");
   const [snackbarBgColor, setSnackbarBgColor] = useState("");
-
   const searchParams = useSearchParams();
   const queryEmail = searchParams.get("referralCode");
 
-  const fetchIpAddress = async () => {
-    try {
-      const response = await axios.get(`${Base_URL}/v1/my-ip`, {
-        headers: {
-          "x-api-key": X_API_Key,
-        },
-      });
-      setIpAddress(response.data);
-    } catch (error) {
-      console.error("Error fetching IP address:", error);
-    }
-  };
-
   useEffect(() => {
-    fetchIpAddress();
+    async function fetchIp() {
+      const response = await fetch("/api/get-client-ip");
+      const data = await response.json();
+      setIpAddress(data.ip);
+    }
+    fetchIp();
   }, []);
 
   const validate = () => {
@@ -344,9 +335,9 @@ const CartCard = () => {
                             width={"200px"}
                           />
                         </div>
-                        {cartResponse.map((item) => (
+                        {cartResponse.map((item, i) => (
                           <div
-                            key={item.exam_code}
+                            key={i}
                             className="flex -m-2 border-b-2 mb-4"
                           >
                             <div className="w-auto hidden lg:inline-flex p-2">

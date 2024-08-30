@@ -12,8 +12,9 @@ const MasterKeyCard = ({ params }) => {
   useEffect(() => {
     const fetchIp = async () => {
       try {
-        const response = await axios.get("http://localhost:3001/api/get-ip");
-        setIp(response.data.ip);
+        const response = await fetch("/api/get-client-ip");
+        const data = await response.json();
+        setIp(data.ip);
       } catch (error) {
         console.error("Error fetching IP:", error);
       }
@@ -48,7 +49,7 @@ const MasterKeyCard = ({ params }) => {
         fetchMasterKey(ip);
       }
     });
-  }, [params.key_1, params.key_2, ip]); // Dependencies to rerun the effect if these values change
+  }, [params.key_1, params.key_2, ip]);
 
   return (
     <div>

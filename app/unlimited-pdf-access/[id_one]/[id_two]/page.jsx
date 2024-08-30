@@ -131,23 +131,23 @@ const UnlimitedPDFPage = ({ params }) => {
         )}
       </section>
 
-      <section class="px-6 bg-white">
-        <div class="flex flex-wrap -m-4">
-          <div class="w-full lg:w-4/12 p-12">
-            <div class="flex items-end gap-6">
+      <section className="px-6 bg-white">
+        <div className="flex flex-wrap -m-4">
+          <div className="w-full lg:w-4/12 p-12">
+            <div className="flex items-end gap-6">
               <span
                 style={{ display: "flex", justifyContent: "center" }}
-                class="group flex-1"
+                className="group flex-1"
               >
                 <div
-                  class="relative overflow-hidden rounded-xl transition duration-200"
+                  className="relative overflow-hidden rounded-xl transition duration-200"
                   style={{
                     height: "270px",
                     width: "270px",
                   }}
                 >
                   <img
-                    class="absolute inset-0 rounded-xl w-full h-full transform group-hover:scale-105 transition duration-200"
+                    className="absolute inset-0 rounded-xl w-full h-full transform group-hover:scale-105 transition duration-200"
                     src="/package-small-min_optimized.png"
                     alt=""
                   />
@@ -155,25 +155,25 @@ const UnlimitedPDFPage = ({ params }) => {
               </span>
             </div>
           </div>
-          <div class="w-full lg:w-8/12 p-4">
-            <div class="p-5 pt-20">
-              <h2 class="font-heading uppercase text-3xl mb-2 max-w-xl">
+          <div className="w-full lg:w-8/12 p-4">
+            <div className="p-5 pt-20">
+              <h2 className="font-heading uppercase text-3xl mb-2 max-w-xl">
                 Unlimited PDF Access
               </h2>
               <hr className="mb-4" style={{ border: "2px solid #F5F6FA" }} />
-              <p class="text-gray-500 text-base mt-2 font-semibold max-w-xl">
+              <p className="text-gray-500 text-base mt-2 font-semibold max-w-xl">
                 You have unlimited access to PDF Dumps files.
               </p>
 
-              <p class="text-blue-500 text-base mt-2 font-semibold max-w-xl">
+              <p className="text-blue-500 text-base mt-2 font-semibold max-w-xl">
                 You have downloaded: {unlimitedTeAccess?.total_downloaded}
               </p>
 
-              <p class="text-green-500 text-base mt-2 font-semibold max-w-xl">
+              <p className="text-green-500 text-base mt-2 font-semibold max-w-xl">
                 Monthly Download Limit: {unlimitedTeAccess?.total_limit}
               </p>
 
-              <p class="text-gray-500 text-base mt-2 font-semibold mb-6 max-w-xl">
+              <p className="text-gray-500 text-base mt-2 font-semibold mb-6 max-w-xl">
                 (Each download of a different or the same PDF file will affect
                 the download limit)
               </p>
@@ -217,13 +217,13 @@ const UnlimitedPDFPage = ({ params }) => {
 
       {unlimitedTeAccess?.purchase_valid &&
         !unlimitedTeAccess?.purchase_approved && (
-          <section class="pt-6 pb-6 container mx-auto px-6 bg-white">
+          <section className="pt-6 pb-6 container mx-auto px-6 bg-white">
             <div className="text-center">
               <div role="alert">
-                <div class="bg-red-500 text-white font-bold rounded-t px-4 py-2">
+                <div className="bg-red-500 text-white font-bold rounded-t px-4 py-2">
                   Unlimited PDF Access!
                 </div>
-                <div class="border border-t-0 border-red-400 rounded-b bg-red-100 px-4 py-3 text-red-700">
+                <div className="border border-t-0 border-red-400 rounded-b bg-red-100 px-4 py-3 text-red-700">
                   <p>
                     Your Unlimited PDF access is not approved yet. We are
                     checking your payment so this might take a few hours. Please
@@ -243,9 +243,9 @@ const UnlimitedPDFPage = ({ params }) => {
         )}
 
       {unlimitedTeAccess?.purchase_approved && (
-        <section class="pb-4 bg-blueGray-50">
-          <div class="container mx-auto">
-            <div class="pt-14 px-8 pb-12 bg-white rounded-5xl">
+        <section className="pb-4 bg-blueGray-50">
+          <div className="container mx-auto">
+            <div className="pt-14 px-8 pb-12 bg-white rounded-5xl">
               {selectedVendors?.map((vendor, index) => (
                 <div key={index}>
                   <div className="mb-1 mt-3 text-2xl pl-5 py-4 font-bold tracking-tight text-blue-700">

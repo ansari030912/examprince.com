@@ -6,7 +6,7 @@ import {
   Grid,
   Snackbar,
   SnackbarContent,
-  Typography
+  Typography,
 } from "@mui/material";
 import axios from "axios";
 import Link from "next/link";
@@ -27,19 +27,12 @@ const CustomInvoiceCart = ({ params }) => {
   const [acceptedTerms, setAcceptedTerms] = useState(false);
 
   useEffect(() => {
-    const fetchIpAddress = async () => {
-      try {
-        const response = await axios.get(`${Base_URL}/v1/my-ip`, {
-          headers: {
-            "x-api-key": X_API_Key,
-          },
-        });
-        setIpAddress(response.data);
-      } catch (error) {
-        console.error("Error fetching IP address:", error);
-      }
-    };
-    fetchIpAddress();
+    async function fetchIp() {
+      const response = await fetch("/api/get-client-ip");
+      const data = await response.json();
+      setIpAddress(data.ip);
+    }
+    fetchIp();
   }, []);
 
   useEffect(() => {
@@ -94,9 +87,7 @@ const CustomInvoiceCart = ({ params }) => {
       return;
     }
     setLoading(true);
-    setRedirectingMessage(
-      "We are Redirecting you for Payment on PREPWISE..."
-    );
+    setRedirectingMessage("We are Redirecting you for Payment on PREPWISE...");
     setTimeout(async () => {
       try {
         const response = await axios.post(
@@ -228,7 +219,9 @@ const CustomInvoiceCart = ({ params }) => {
                           </div>
                         </div>
                       </div>
-                      {index < data.invoice_items.length - 1 && <hr className="my-6"/>}
+                      {index < data.invoice_items.length - 1 && (
+                        <hr className="my-6" />
+                      )}
                     </div>
                   ))}
                   <div className="py-6 border-b border-dashed">

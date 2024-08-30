@@ -67,10 +67,10 @@ const VideoTrainingCourseAddToCart = ({ data }) => {
           }
         />
       </Snackbar>
-      <div class="w-full px-2 mb-2 md:mb-0">
+      <div className="w-full px-2 mb-2 md:mb-0">
         <button
           onClick={handleBoxClick}
-          class="block py-2 px-2 leading-8 w-full font-heading font-medium tracking-tighter text-lg text-white text-center bg-blue-500 focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 hover:bg-blue-600 rounded-xl"
+          className="block py-2 px-2 leading-8 w-full font-heading font-medium tracking-tighter text-lg text-white text-center bg-blue-500 focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 hover:bg-blue-600 rounded-xl"
         >
           Add to Cart
         </button>

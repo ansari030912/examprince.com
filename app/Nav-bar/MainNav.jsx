@@ -20,19 +20,7 @@ const MainNav = () => {
   const [vendorData, setVendorData] = useState([]);
   const [certificationData, setCertificationData] = useState([]);
   const [searchValue, setSearchValue] = useState("");
-  const [ip, setIp] = useState(null);
-  console.log("🚀 ~ MainNav ~ ip:", ip);
 
-  useEffect(() => {
-    async function fetchIp() {
-      const response = await axios.get("/api/get-ip");
-      const data = await response.json();
-      console.log("🚀 ~ fetchIp ~ data:", data);
-      setIp(data.ip);
-    }
-
-    fetchIp();
-  }, []);
 
   const handleSignOut = () => {
     localStorage.removeItem("loginResponse");
@@ -92,7 +80,6 @@ const MainNav = () => {
     setIsOpen(!isOpen);
   };
 
- 
   const normalizeSearchValue = (value) => {
     return value.replace(/[^a-zA-Z0-9]/g, "").toLowerCase();
   };
@@ -106,7 +93,7 @@ const MainNav = () => {
     .filter((item) => {
       const normalizedCode = normalizeSearchValue(item.code);
       const normalizedSearchValue = normalizeSearchValue(searchValue);
-      return normalizedCode.startsWith(normalizedSearchValue);
+      return normalizedCode.includes(normalizedSearchValue);
     })
     .slice(0, 30);
   
@@ -114,7 +101,7 @@ const MainNav = () => {
     .filter((item) => {
       const normalizedSlug = normalizeSearchValue(item.slug);
       const normalizedSearchValue = normalizeSearchValue(searchValue);
-      return normalizedSlug.startsWith(normalizedSearchValue);
+      return normalizedSlug.includes(normalizedSearchValue);
     })
     .slice(0, 10);
   
@@ -122,7 +109,7 @@ const MainNav = () => {
     .filter((item) => {
       const normalizedSlug = normalizeSearchValue(item.slug);
       const normalizedSearchValue = normalizeSearchValue(searchValue);
-      return normalizedSlug.startsWith(normalizedSearchValue);
+      return normalizedSlug.includes(normalizedSearchValue);
     })
     .slice(0, 10);
   
@@ -435,7 +422,7 @@ const MainNav = () => {
                             <svg
                               width="24"
                               height="24"
-                              viewbox="0 0 24 24"
+                              viewBox="0 0 24 24"
                               fill="none"
                               xmlns="http://www.w3.org/2000/svg"
                             >
@@ -750,7 +737,7 @@ const MainNav = () => {
                           className="mr-2"
                           width="24"
                           height="24"
-                          viewbox="0 0 24 24"
+                          viewBox="0 0 24 24"
                           fill="none"
                           xmlns="http://www.w3.org/2000/svg"
                         >
@@ -777,7 +764,7 @@ const MainNav = () => {
                           className="mr-2"
                           width="24"
                           height="24"
-                          viewbox="0 0 24 24"
+                          viewBox="0 0 24 24"
                           fill="none"
                           xmlns="http://www.w3.org/2000/svg"
                         >
@@ -833,7 +820,7 @@ const MainNav = () => {
                           className="mr-2"
                           width="24"
                           height="24"
-                          viewbox="0 0 24 24"
+                          viewBox="0 0 24 24"
                           fill="none"
                           xmlns="http://www.w3.org/2000/svg"
                         >
@@ -982,7 +969,7 @@ const MainNav = () => {
                                 className="mr-2"
                                 width="24"
                                 height="24"
-                                viewbox="0 0 24 24"
+                                viewBox="0 0 24 24"
                                 fill="none"
                                 xmlns="http://www.w3.org/2000/svg"
                               >
@@ -1008,7 +995,7 @@ const MainNav = () => {
                                 className="mr-2"
                                 width="24"
                                 height="24"
-                                viewbox="0 0 24 24"
+                                viewBox="0 0 24 24"
                                 fill="none"
                                 xmlns="http://www.w3.org/2000/svg"
                               >
@@ -1060,7 +1047,7 @@ const MainNav = () => {
                                 className="mr-2"
                                 width="24"
                                 height="24"
-                                viewbox="0 0 24 24"
+                                viewBox="0 0 24 24"
                                 fill="none"
                                 xmlns="http://www.w3.org/2000/svg"
                               >

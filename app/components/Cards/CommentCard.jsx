@@ -44,22 +44,14 @@ const CommentCard = ({ examData }) => {
   };
 
   useEffect(() => {
-    const fetchUserIP = async () => {
-      try {
-        const response = await axios.get(`${Base_URL}/v1/my-ip`, {
-          headers: {
-            "x-api-key": X_API_Key,
-          },
-        });
-        setUserIP(response.data);
-      } catch (error) {
-        console.error("Error fetching user's IP address:", error);
-      }
-      fetchData();
-    };
-
-    fetchUserIP();
-  }, [examData]);
+    async function fetchIp() {
+      const response = await fetch("/api/get-client-ip");
+      const data = await response.json();
+      setUserIP(data.ip);
+    }
+    fetchIp();
+    fetchData();
+  }, []);
 
   const handleSubmit = async (event) => {
     setOpen(true);

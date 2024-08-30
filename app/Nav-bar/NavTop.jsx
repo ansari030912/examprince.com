@@ -1,24 +1,9 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import BackCountDown from "../components/Cards/BackCountDown";
 
 const NavTop = () => {
   const [hidden, setHidden] = useState(false);
-  const [clientIp, setClientIp] = useState("");
-
-  useEffect(() => {
-    const fetchClientIp = async () => {
-      try {
-        const response = await fetch("/api/get-client-ip");
-        const data = await response.json();
-        setClientIp(data.ip);
-      } catch (error) {
-        console.error("Error fetching client IP:", error);
-      }
-    };
-
-    fetchClientIp();
-  }, []);
 
   return (
     !hidden && (
@@ -58,9 +43,6 @@ const NavTop = () => {
                   MEGASALE
                 </span>
               </span>
-              <div className="mt-2 text-xs">
-                <strong>Your IP:</strong> {clientIp}
-              </div>
             </span>
           </div>
         </div>

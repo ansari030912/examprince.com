@@ -58,14 +58,14 @@ const HotExamTableCard = ({ data }) => {
 
   const renderRows = (items) => {
     return (
-      <div class="px-2 pt-5 pb-4 bg-white rounded-xl">
-        <div class="overflow-x-auto custom-scrollbar">
-          <div class="inline-block w-full min-w-max overflow-hidden ">
-            <table class="table-auto w-full">
+      <div className="px-2 pt-5 pb-4 bg-white rounded-xl">
+        <div className="overflow-x-auto custom-scrollbar">
+          <div className="inline-block w-full min-w-max overflow-hidden ">
+            <table className="table-auto w-full">
               <tbody>
                 {items?.slice(0, 10)?.map((item, index) => (
                   <tr key={index} style={{ borderRadius: "4px" }}>
-                    <td class="p-0">
+                    <td className="p-0">
                       <div
                         class={
                           index % 2 === 0
@@ -73,14 +73,14 @@ const HotExamTableCard = ({ data }) => {
                             : "flex items-center pl-4 pr-4 h-20"
                         }
                       >
-                        <div class="flex items-center">
+                        <div className="flex items-center">
                           <img
-                            class="mr-4 h-8"
+                            className="mr-4 h-8"
                             src={"https://dumpsarena.com/media/bacb.png"}
                             alt=""
                           />
-                          <div class="flex-shrink-1">
-                            <h4 class="font-heading text-wrap font-medium leading-4 text-blue-400 hover:text-blue-600">
+                          <div className="flex-shrink-1">
+                            <h4 className="font-heading text-wrap font-medium leading-4 text-blue-400 hover:text-blue-600">
                               <Link
                                 href={`/exam-questions/${item.vendor_perma}/${item.exam_perma}`}
                                 className="text-xs md:text-base text-gray-600"
@@ -110,7 +110,7 @@ const HotExamTableCard = ({ data }) => {
                       </div>
                     </td>
 
-                    <td class="p-0 hidden md:block">
+                    <td className="p-0 hidden md:block">
                       <div
                         class={
                           index % 2 === 0
@@ -118,7 +118,7 @@ const HotExamTableCard = ({ data }) => {
                             : "flex items-center justify-center p-5 h-20 text-center"
                         }
                       >
-                        <span class="py-2 pb-2 px-3 text-blue-600 font-medium  text-sm rounded-full">
+                        <span className="py-2 pb-2 px-3 text-blue-600 font-medium  text-sm rounded-full">
                           <div
                             style={{
                               display: "flex",

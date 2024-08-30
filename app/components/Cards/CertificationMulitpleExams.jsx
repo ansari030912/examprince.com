@@ -5,11 +5,11 @@ import BackCountDown from "./BackCountDown";
 
 const CertificationMulitpleExams = ({ data }) => {
   return (
-    <div class="w-full lg:w-12/12 p-4 px-6">
+    <div className="w-full lg:w-12/12 p-4 px-6">
       <Grid container spacing={2}>
         <Grid item xs={12} lg={7}>
           <div>
-            <p class="text-xl text-blue-600">{data?.exam_vendor_title}</p>
+            <p className="text-xl text-blue-600">{data?.exam_vendor_title}</p>
             <Grid container spacing={2} sx={{ mb: "10px" }}>
               <Grid item xs={12} sm={6}>
                 <h6 className="text-2xl text-gray-600 font-semibold text-center sm:text-left">

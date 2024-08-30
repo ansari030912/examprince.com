@@ -53,23 +53,23 @@ const ScAccess = async ({ params }) => {
 
   return (
     <>
-      <section class="pt-12 pb-12 bg-white overflow-hidden">
-        <div class="relative container px-4 mx-auto">
-          <h1 class="mb-12 text-center text-blue-500 text-3xl font-heading font-medium">
+      <section className="pt-12 pb-12 bg-white overflow-hidden">
+        <div className="relative container px-4 mx-auto">
+          <h1 className="mb-12 text-center text-blue-500 text-3xl font-heading font-medium">
             {data?.title}
           </h1>
-          <div class="flex flex-wrap -mx-4 ">
-            <div class="w-full lg:w-5/12 px-4 mb-16 lg:mb-0">
-              <div class="relative w-full md:w-1/1 ml-auto">
-                <div class="w-4/6 mx-auto">
+          <div className="flex flex-wrap -mx-4 ">
+            <div className="w-full lg:w-5/12 px-4 mb-16 lg:mb-0">
+              <div className="relative w-full md:w-1/1 ml-auto">
+                <div className="w-4/6 mx-auto">
                   <img src="/video-file-formats.png" alt="" />
                 </div>
               </div>
             </div>
-            <div class="w-full lg:w-7/12 px-4 xl:pl-20">
-              <div class="max-w-2xl mb-6">
-                <p class="flex items-start mb-8"></p>
-                <p class="text-base text-gray-400">
+            <div className="w-full lg:w-7/12 px-4 xl:pl-20">
+              <div className="max-w-2xl mb-6">
+                <p className="flex items-start mb-8"></p>
+                <p className="text-base text-gray-400">
                   Get ready for your exam by enrolling in our comprehensive
                   training course. This course includes a full set of
                   instructional videos designed to equip you with in-depth
@@ -77,13 +77,13 @@ const ScAccess = async ({ params }) => {
                   flying colors.
                 </p>
               </div>
-              <div class="flex mb-6 items-center">
-                <div class="inline-flex mr-4">
-                  <button class="mr-1">
+              <div className="flex mb-6 items-center">
+                <div className="inline-flex mr-4">
+                  <button className="mr-1">
                     <svg
                       width="20"
                       height="20"
-                      viewbox="0 0 20 20"
+                      viewBox="0 0 20 20"
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg"
                     >
@@ -93,11 +93,11 @@ const ScAccess = async ({ params }) => {
                       ></path>
                     </svg>
                   </button>
-                  <button class="mr-1">
+                  <button className="mr-1">
                     <svg
                       width="20"
                       height="20"
-                      viewbox="0 0 20 20"
+                      viewBox="0 0 20 20"
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg"
                     >
@@ -107,11 +107,11 @@ const ScAccess = async ({ params }) => {
                       ></path>
                     </svg>
                   </button>
-                  <button class="mr-1">
+                  <button className="mr-1">
                     <svg
                       width="20"
                       height="20"
-                      viewbox="0 0 20 20"
+                      viewBox="0 0 20 20"
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg"
                     >
@@ -121,11 +121,11 @@ const ScAccess = async ({ params }) => {
                       ></path>
                     </svg>
                   </button>
-                  <button class="mr-1">
+                  <button className="mr-1">
                     <svg
                       width="20"
                       height="20"
-                      viewbox="0 0 20 20"
+                      viewBox="0 0 20 20"
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg"
                     >
@@ -139,7 +139,7 @@ const ScAccess = async ({ params }) => {
                     <svg
                       width="20"
                       height="20"
-                      viewbox="0 0 20 20"
+                      viewBox="0 0 20 20"
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg"
                     >
@@ -150,9 +150,9 @@ const ScAccess = async ({ params }) => {
                     </svg>
                   </button>
                 </div>
-                <span class="text-2xl text-gray-400">4.59</span>
+                <span className="text-2xl text-gray-400">4.59</span>
               </div>
-              <button class="inline-flex items-center justify-center text-sm h-12 w-full rounded-full border-2 border-gray-300 hover:border-gray-400 border-opacity-80 text-gray-400 font-medium">
+              <button className="inline-flex items-center justify-center text-sm h-12 w-full rounded-full border-2 border-gray-300 hover:border-gray-400 border-opacity-80 text-gray-400 font-medium">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="1.8em"
@@ -192,7 +192,7 @@ const ScAccess = async ({ params }) => {
                 </svg>{" "}
                 <span className="ml-2">{data?.duration} : Duration</span>
               </button>
-              <button class="inline-flex mt-3 items-center justify-center text-sm h-12 w-full rounded-full border-2 border-gray-300 hover:border-gray-400 border-opacity-80 text-gray-400 font-medium">
+              <button className="inline-flex mt-3 items-center justify-center text-sm h-12 w-full rounded-full border-2 border-gray-300 hover:border-gray-400 border-opacity-80 text-gray-400 font-medium">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="1.8em"
@@ -303,8 +303,8 @@ const ScAccess = async ({ params }) => {
               </button>
             </div>
           </div>
-          <div class="pt-1 mt-12 border-t border-gray-100">
-            <span class="inline-block p-3 w-full md:w-auto mb-4 md:mb-0 md:mr-20 lg:mr-36 text-blue-500 text-xl font-heading font-medium">
+          <div className="pt-1 mt-12 border-t border-gray-100">
+            <span className="inline-block p-3 w-full md:w-auto mb-4 md:mb-0 md:mr-20 lg:mr-36 text-blue-500 text-xl font-heading font-medium">
               Video Courses
             </span>
             <ScAccessAccordian data={data} />

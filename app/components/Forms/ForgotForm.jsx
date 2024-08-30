@@ -14,21 +14,13 @@ const ForgotForm = () => {
   const [openSnackbar, setOpenSnackbar] = useState(false);
   const [responseMessage, setResponseMessage] = useState("");
 
-  const fetchIP = async () => {
-    try {
-      const response = await axios.get(`${Base_URL}/v1/my-ip`, {
-        headers: {
-          "x-api-key": X_API_Key
-        },
-      });
-      setIp(response.data); // Assuming response.data contains an 'ip' field
-    } catch (error) {
-      console.error("Error fetching IP:", error);
-    }
-  };
-
   useEffect(() => {
-    fetchIP();
+    async function fetchIp() {
+      const response = await fetch("/api/get-client-ip");
+      const data = await response.json();
+      setIp(data.ip);
+    }
+    fetchIp();
   }, []);
 
   const handleSubmit = async (event) => {
@@ -77,7 +69,9 @@ const ForgotForm = () => {
       >
         <Alert
           onClose={() => setOpenSnackbar(false)}
-          severity={responseMessage.includes("successful") ? "success" : "error"}
+          severity={
+            responseMessage.includes("successful") ? "success" : "error"
+          }
           variant="filled"
           sx={{ width: "100%" }}
         >

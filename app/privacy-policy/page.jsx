@@ -14,7 +14,7 @@ const PrivacyPolicy = async () => {
 
   return (
     <>
-      <section class="pt-6 px-6 bg-white">
+      <section className="pt-6 px-6 bg-white">
         <Link href={imageUrl?.banner_link} className="flex justify-center mb-4">
           <img src={imageUrl?.banner_src} alt={imageUrl?.banner_website} />
         </Link>
@@ -50,12 +50,12 @@ const PrivacyPolicy = async () => {
                 and used.
               </p>
 
-              <div class="flex items-center -mx-2">
-                <div class="w-auto px-2">
-                  <h4 class="txl-base md:2ext-lg font-bold text-gray-700">
+              <div className="flex items-center -mx-2">
+                <div className="w-auto px-2">
+                  <h4 className="txl-base md:2ext-lg font-bold text-gray-700">
                     Tech Professionals
                   </h4>
-                  <p class="text-base md:text-lg text-gray-500">21 May 2024</p>
+                  <p className="text-base md:text-lg text-gray-500">21 May 2024</p>
                 </div>
               </div>
             </div>
