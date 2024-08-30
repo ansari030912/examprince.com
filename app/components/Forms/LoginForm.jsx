@@ -2,7 +2,7 @@
 /* eslint-disable @next/next/no-img-element */
 import { X_API_Key } from "@/app/URL's/Api_X_Key";
 import { Base_URL } from "@/app/URL's/Base_URL";
-import { Alert, Snackbar } from "@mui/material";
+import { Alert, CircularProgress, Snackbar } from "@mui/material";
 import axios from "axios";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -17,6 +17,7 @@ const LoginForm = () => {
   const [passwordError, setPasswordError] = useState("");
   const [ip, setIp] = useState("");
   const [openSnackbar, setOpenSnackbar] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     async function fetchIp() {
@@ -26,6 +27,7 @@ const LoginForm = () => {
     }
     fetchIp();
   }, []);
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     setEmailError("");
@@ -46,6 +48,8 @@ const LoginForm = () => {
     if (emailError || passwordError) {
       return;
     }
+
+    setLoading(true);
 
     try {
       const response = await axios.post(
@@ -70,7 +74,6 @@ const LoginForm = () => {
         const expiryTime = currentTime + twoHoursInMillis;
 
         if (typeof localStorage !== "undefined") {
-          // Use localStorage
           localStorage.setItem(
             "loginResponse",
             JSON.stringify({ ...response.data, expiryTime })
@@ -85,8 +88,11 @@ const LoginForm = () => {
     } catch (error) {
       console.error("Error:", error);
       alert("Something went wrong. Please try again later.");
+    } finally {
+      setLoading(false);
     }
   };
+
   return (
     <>
       <Snackbar
@@ -169,11 +175,14 @@ const LoginForm = () => {
               <button
                 className="inline-block py-3 px-7 mb-4 w-full text-base text-green-50 font-medium text-center leading-6 bg-green-500 hover:bg-green-600 focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 rounded-md shadow-sm"
                 type="submit"
+                disabled={loading}
               >
-                Log In
+                {loading ? <CircularProgress size={24} color="inherit" /> : "Log In"}
               </button>
               <p className="text-center">
-                <span className="text-xs font-medium">Not have an account?</span>{" "}
+                <span className="text-xs font-medium">
+                  Not have an account?
+                </span>{" "}
                 <Link
                   className="inline-block text-xs font-medium text-green-500 hover:text-green-600 hover:underline"
                   href="/register"
