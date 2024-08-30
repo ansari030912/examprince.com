@@ -138,7 +138,7 @@ const TeAccess = ({ params }) => {
                 Activation & Purchase Key {i + 1}
               </Typography>
               <Typography className="text-red-500">
-                {item.activation_key_used ? "This key is used or expired!" : ""}
+                {item.activation_key_used ? "This key is already used!" : ""}
               </Typography>
               <TextField
                 size="small"
