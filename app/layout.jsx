@@ -4,7 +4,6 @@ import NavTop from "./Nav-bar/NavTop";
 import { AuthGuard } from "./auth/AuthGuard";
 import ScrollLoader from "./components/Cards/ScrollLoader";
 import ScrollToTop from "./components/Cards/ScrollToTop";
-import { GoogleTagManager } from "@next/third-parties/google";
 import "./globals.css";
 
 export const metadata = {
@@ -15,8 +14,11 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html>
-      <GoogleTagManager gtmId="G-FDQ0DQHTHX" />
       <body>
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-FDQ0DQHTHX"
+        ></script>
         <script
           dangerouslySetInnerHTML={{
             __html: `
