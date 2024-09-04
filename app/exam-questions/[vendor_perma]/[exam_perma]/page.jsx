@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 import { X_API_Key } from "@/app/URL's/Api_X_Key";
 import { Base_URL } from "@/app/URL's/Base_URL";
 import ArticleCard from "@/app/components/Cards/ArticleCard";
@@ -21,7 +20,6 @@ const page = async ({ params, searchParams }) => {
       },
     }
   );
-
   const releatedData = await releatedExams.json();
 
   const examResponce = await fetch(
@@ -32,7 +30,6 @@ const page = async ({ params, searchParams }) => {
       },
     }
   );
-
   const examData = await examResponce.json();
 
   const response = await fetch(`${Base_URL}/v1/hot_exams`, {
@@ -40,7 +37,6 @@ const page = async ({ params, searchParams }) => {
       "x-api-key": X_API_Key,
     },
   });
-
   const data = await response.json();
 
   const bannerResponec = await fetch(`${Base_URL}/v1/banner`, {
@@ -48,58 +44,12 @@ const page = async ({ params, searchParams }) => {
       "x-api-key": X_API_Key,
     },
   });
-
   const imageUrl = await bannerResponec.json();
 
   const randomReviewCount = Math.floor(Math.random() * (999 - 700 + 1)) + 700;
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: examData?.exam_faqs?.map((faq) => ({
-              "@type": "Question",
-              name: faq.faq_q,
-              acceptedAnswer: {
-                "@type": "Answer",
-                text: faq.faq_a,
-              },
-            })),
-          }),
-        }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org/",
-            "@type": "Product",
-            name: examData?.exam_title,
-            description: `Examprince is a premium provider of Real and Valid Exam Question and Answers of ${examData?.exam_title} IT certification Exams. Pass your certification exam easily with pdf and test engine dumps in 2024.`,
-            review: {
-              "@type": "Review",
-              reviewRating: {
-                "@type": "Rating",
-                ratingValue: 4,
-                bestRating: 5,
-              },
-              author: {
-                "@type": "Person",
-                name: "Fred Benson",
-              },
-            },
-            aggregateRating: {
-              "@type": "AggregateRating",
-              ratingValue: 4.4,
-              reviewCount: randomReviewCount,
-            },
-          }),
-        }}
-      />
       <section className="pt-6 pb-6 px-6 bg-white">
         <Link href={imageUrl?.banner_link} className="flex justify-center mb-4">
           <img src={imageUrl?.banner_src} alt={imageUrl?.banner_website} />
@@ -119,8 +69,9 @@ const page = async ({ params, searchParams }) => {
 };
 
 export default page;
+
 export async function generateMetadata({ params }) {
-  const response = await fetch(
+  const examResponce = await fetch(
     `${Base_URL}/v1/exam/${params.exam_perma}?coupon=MEGASALE-30`,
     {
       headers: {
@@ -128,18 +79,72 @@ export async function generateMetadata({ params }) {
       },
     }
   );
-  const data = await response.json();
+  const examData = await examResponce.json();
+
+  const randomReviewCount = Math.floor(Math.random() * (999 - 700 + 1)) + 700;
+
+  // FAQ structured data
+  const faqStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: examData?.exam_faqs?.map((faq) => ({
+      "@type": "Question",
+      name: faq.faq_q,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.faq_a,
+      },
+    })),
+  };
+
+  // Product structured data
+  const productStructuredData = {
+    "@context": "https://schema.org/",
+    "@type": "Product",
+    name: examData?.exam_title,
+    description: `Examprince is a premium provider of Real and Valid Exam Question and Answers of ${examData?.exam_title} IT certification Exams. Pass your certification exam easily with pdf and test engine dumps in 2024.`,
+    review: {
+      "@type": "Review",
+      reviewRating: {
+        "@type": "Rating",
+        ratingValue: 4,
+        bestRating: 5,
+      },
+      author: {
+        "@type": "Person",
+        name: "Fred Benson",
+      },
+    },
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: 4.4,
+      reviewCount: randomReviewCount,
+    },
+  };
+
   return {
-    title: `Updated ${data.exam_title} Exam Question and Answers by Tech Professionals`,
-    description: `Examprince is a premium provider of Real and Valid Exam Question and Answers of ${data.exam_title} IT certification Exams. Pass your certification exam easily with pdf and test engine dumps in 2024 and become certified professional.`,
+    title: `Updated ${examData.exam_title} Exam Question and Answers by Tech Professionals`,
+    description: `Examprince is a premium provider of Real and Valid Exam Question and Answers of ${examData.exam_title} IT certification Exams. Pass your certification exam easily with pdf and test engine dumps in 2024 and become certified professional.`,
     robots: {
-      index: data.index_tag ? data.index_tag : false,
+      index: examData.index_tag ? examData.index_tag : false,
     },
     icons: {
       other: [
         {
           rel: "canonical",
           url: `https://examprince.com/exam-questions/${params.vendor_perma}/${params.exam_perma}`,
+        },
+      ],
+    },
+    other: {
+      scripts: [
+        {
+          type: "application/ld+json",
+          json: faqStructuredData,
+        },
+        {
+          type: "application/ld+json",
+          json: productStructuredData,
         },
       ],
     },
