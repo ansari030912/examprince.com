@@ -9,15 +9,6 @@ const page = ({ params }) => {
 
 export default page;
 export async function generateMetadata({ params }) {
-  const response = await fetch(
-    `${Base_URL}/v1/exam/${params.exam_perma}?coupon=MEGASALE-30`,
-    {
-      headers: {
-        "x-api-key": X_API_Key,
-      },
-    }
-  );
-  const data = await response.json();
   return {
     title: `TEST ENGINE Master Key`,
     description: `Examprince is a premium provider of Real and Valid Exam Question and Answers of IT certification Exams. Pass your certification exam easily with pdf and test engine dumps in 2024 and become certified professional.`,

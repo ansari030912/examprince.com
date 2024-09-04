@@ -42,6 +42,7 @@ const page = async ({ params, searchParams }) => {
   });
 
   const data = await response.json();
+
   const bannerResponec = await fetch(`${Base_URL}/v1/banner`, {
     headers: {
       "x-api-key": X_API_Key,
@@ -54,6 +55,51 @@ const page = async ({ params, searchParams }) => {
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: examData?.exam_faqs?.map((faq) => ({
+              "@type": "Question",
+              name: faq.faq_q,
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: faq.faq_a,
+              },
+            })),
+          }),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org/",
+            "@type": "Product",
+            name: examData?.exam_title,
+            description: `Examprince is a premium provider of Real and Valid Exam Question and Answers of ${examData?.exam_title} IT certification Exams. Pass your certification exam easily with pdf and test engine dumps in 2024.`,
+            review: {
+              "@type": "Review",
+              reviewRating: {
+                "@type": "Rating",
+                ratingValue: 4,
+                bestRating: 5,
+              },
+              author: {
+                "@type": "Person",
+                name: "Fred Benson",
+              },
+            },
+            aggregateRating: {
+              "@type": "AggregateRating",
+              ratingValue: 4.4,
+              reviewCount: randomReviewCount,
+            },
+          }),
+        }}
+      />
       <section className="pt-6 pb-6 px-6 bg-white">
         <Link href={imageUrl?.banner_link} className="flex justify-center mb-4">
           <img src={imageUrl?.banner_src} alt={imageUrl?.banner_website} />

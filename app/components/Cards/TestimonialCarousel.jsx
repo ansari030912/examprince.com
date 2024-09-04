@@ -378,7 +378,7 @@ const TestimonialCarousel = () => {
                     >
                       <h3 style={{ fontSize: "1.2rem", fontWeight: "600" }}>
                         {review.name}
-                        <hr className="border-2 border-green-300"/>
+                        <hr className="border-2 border-green-300" />
                       </h3>
                     </div>
                   </div>
