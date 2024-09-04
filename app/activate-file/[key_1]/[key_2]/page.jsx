@@ -1,7 +1,4 @@
 import MasterKeyCard from "@/app/components/Cards/MasterKeyCard";
-import { X_API_Key } from "@/app/URL's/Api_X_Key";
-import { Base_URL } from "@/app/URL's/Base_URL";
-import React from "react";
 
 const page = ({ params }) => {
   return <MasterKeyCard params={params} />;

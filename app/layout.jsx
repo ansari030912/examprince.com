@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/next-script-for-ga */
 import FooterBar from "./Footer/FooterBar";
 import MainNav from "./Nav-bar/MainNav";
 import NavTop from "./Nav-bar/NavTop";
