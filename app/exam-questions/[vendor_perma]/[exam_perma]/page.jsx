@@ -8,27 +8,34 @@ import ExamDetailCard from "@/app/components/Cards/ExamDetailCard";
 import ExamFaqCard from "@/app/components/Cards/ExamFaqCard";
 import HotExams from "@/app/components/IndexPages/HotExams";
 import LogoBanner from "@/app/components/IndexPages/LogoBanner";
+import SchemaPage from "@/app/components/SchemaPage";
 import Link from "next/link";
 
 const page = async ({ params, searchParams }) => {
   const referral = searchParams?.ref || "";
 
-  const [relatedExamsRes, examResponse, hotExamsRes, bannerResponse] = await Promise.all([
-    fetch(`${Base_URL}/v1/related_exams/${params?.vendor_perma}`, {
-      headers: { "x-api-key": X_API_Key },
-    }),
-    fetch(`${Base_URL}/v1/exam/${params.exam_perma}?coupon=MEGASALE-30`, {
-      headers: { "x-api-key": X_API_Key },
-    }),
-    fetch(`${Base_URL}/v1/hot_exams`, {
-      headers: { "x-api-key": X_API_Key },
-    }),
-    fetch(`${Base_URL}/v1/banner`, {
-      headers: { "x-api-key": X_API_Key },
-    })
-  ]);
+  const [relatedExamsRes, examResponse, hotExamsRes, bannerResponse] =
+    await Promise.all([
+      fetch(`${Base_URL}/v1/related_exams/${params?.vendor_perma}`, {
+        headers: { "x-api-key": X_API_Key },
+      }),
+      fetch(`${Base_URL}/v1/exam/${params.exam_perma}?coupon=MEGASALE-30`, {
+        headers: { "x-api-key": X_API_Key },
+      }),
+      fetch(`${Base_URL}/v1/hot_exams`, {
+        headers: { "x-api-key": X_API_Key },
+      }),
+      fetch(`${Base_URL}/v1/banner`, {
+        headers: { "x-api-key": X_API_Key },
+      }),
+    ]);
 
-  if (!relatedExamsRes.ok || !examResponse.ok || !hotExamsRes.ok || !bannerResponse.ok) {
+  if (
+    !relatedExamsRes.ok ||
+    !examResponse.ok ||
+    !hotExamsRes.ok ||
+    !bannerResponse.ok
+  ) {
     console.error("Error fetching data");
     return <div>Error loading the page. Please try again later.</div>;
   }
@@ -42,61 +49,13 @@ const page = async ({ params, searchParams }) => {
 
   return (
     <>
-      {/* JSON-LD for FAQ */}
-      {examData?.exam_faqs?.length > 0 && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "FAQPage",
-              mainEntity: examData?.exam_faqs?.map((faq) => ({
-                "@type": "Question",
-                name: faq.faq_q,
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: faq.faq_a,
-                },
-              })),
-            }),
-          }}
-        />
-      )}
-      
-      {/* JSON-LD for Product */}
-      {examData?.exam_title && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org/",
-              "@type": "Product",
-              name: examData?.exam_title,
-              description: `Examprince is a premium provider of Real and Valid Exam Question and Answers of ${examData?.exam_title} IT certification Exams. Pass your certification exam easily with pdf and test engine dumps in 2024.`,
-              review: {
-                "@type": "Review",
-                reviewRating: {
-                  "@type": "Rating",
-                  ratingValue: 4,
-                  bestRating: 5,
-                },
-                author: {
-                  "@type": "Person",
-                  name: "Fred Benson",
-                },
-              },
-              aggregateRating: {
-                "@type": "AggregateRating",
-                ratingValue: 4.4,
-                reviewCount: randomReviewCount,
-              },
-            }),
-          }}
-        />
-      )}
+      {/* Only one instance of JSON-LD schema for FAQ */}
 
       <section className="pt-6 pb-6 px-6 bg-white">
-        <Link href={bannerData?.banner_link} className="flex justify-center mb-4">
+        <Link
+          href={bannerData?.banner_link}
+          className="flex justify-center mb-4"
+        >
           <img src={bannerData?.banner_src} alt={bannerData?.banner_website} />
         </Link>
       </section>
@@ -104,7 +63,7 @@ const page = async ({ params, searchParams }) => {
       <div className="md:block hidden">
         <ExamDetailCard />
       </div>
-      
+      <SchemaPage examData={examData} />
       <ExamAddToCart examData={examData} />
       <HotExams />
       <LogoBanner />
