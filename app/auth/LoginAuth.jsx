@@ -14,7 +14,7 @@ export default function loginAuth(Component) {
 
     useEffect(() => {
       if (loginResponse?.is_logged_in) {
-        router.push("/");
+        router.push("/profile/products");
       }
     }, [loginResponse, router]);
 
