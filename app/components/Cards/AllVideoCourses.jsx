@@ -2,7 +2,6 @@
 import { X_API_Key } from "@/app/URL's/Api_X_Key";
 import { Base_URL } from "@/app/URL's/Base_URL";
 import AllVendorTableCard from "./AllVendorTableCard";
-import Link from "next/link";
 
 const AllVideoCourses = async ({ referral }) => {
   const response = await fetch(`${Base_URL}/v1/training-courses`, {

@@ -21,7 +21,7 @@ const page = async () => {
         className=" py-6 bg-cover bg-fixed"
         style={{ backgroundImage: `url("/bg-img-1.jpg")` }}
       >
-        <section class="pt-6 px-6 pb-6">
+        <section className="pt-6 px-6 pb-6">
           <Link
             href={imageUrl?.banner_link}
             className="flex justify-center mb-4"

@@ -42,7 +42,7 @@ const UnlimitedPDFPage = ({ params }) => {
     try {
       const loginResponse = JSON.parse(localStorage.getItem("loginResponse"));
       if (!loginResponse?._token) {
-        return router.push("/sign-in");
+        return router.push("/login");
       }
       const response = await axios.get(
         `${Base_URL}/v1/account/pdf-unlimited-access/${params.id_one}/${params.id_two}/${letter}`,

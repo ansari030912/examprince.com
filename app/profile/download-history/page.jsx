@@ -74,7 +74,6 @@ const DownloadHistoryPage = () => {
                   ></path>
                 </svg>
               </span>
-
               <span className="md:font-medium">
                 <span
                   style={{

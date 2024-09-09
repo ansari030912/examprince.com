@@ -27,7 +27,7 @@ const RecentUpdateExamCard = ({ data }) => {
                         <td className="p-0">
                           {data ? (
                             <div
-                              class={
+                              className={
                                 index % 2 === 0
                                   ? "flex items-center pl-4 pr-4 h-20 bg-blueGray-50 border-l border-t border-b border-gray-100 bg-gray-50 rounded-tl-2xl rounded-bl-2xl"
                                   : "flex items-center pl-4 pr-4 h-20 "
@@ -83,7 +83,7 @@ const RecentUpdateExamCard = ({ data }) => {
                         <td className="p-0 text-right">
                           {data && (
                             <div
-                              class={
+                              className={
                                 index % 2 === 0
                                   ? "flex items-center justify-end p-5 h-20 text-right bg-blueGray-50 border-t border-b border-r rounded-tr-xl rounded-br-xl border-gray-100 bg-gray-50"
                                   : "flex items-center justify-end p-5 h-20 text-right"

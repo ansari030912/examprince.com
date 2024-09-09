@@ -39,7 +39,7 @@ const InvoicePage = () => {
   };
 
   return (
-    <section className="py-8 bg-blueGray-50">
+    <section className="py-2 bg-blueGray-50">
       <div className="container px-4 mx-auto">
         <div className="pt-14 px-8 pb-12 bg-white rounded-5xl">
           <div className="flex flex-wrap mb-8 justify-between items-center">
@@ -70,7 +70,7 @@ const InvoicePage = () => {
                     <tr key={index} style={{ borderRadius: "4px" }}>
                       <td className="p-0">
                         <div
-                          class={
+                          className={
                             index % 2 === 0
                               ? "flex items-center pl-4 pr-4 h-20 bg-blueGray-50 border-l border-t border-b border-gray-100 bg-gray-50 rounded-tl-2xl rounded-bl-2xl"
                               : "flex items-center pl-4 pr-4 h-20 "
@@ -97,7 +97,7 @@ const InvoicePage = () => {
                       </td>
                       <td className="p-0">
                         <div
-                          class={
+                          className={
                             index % 2 === 0
                               ? "flex items-center justify-center p-5 h-20 text-center bg-blueGray-50 border-t border-b border-gray-100 bg-gray-50"
                               : "flex items-center justify-center p-5 h-20 text-center"
@@ -110,7 +110,7 @@ const InvoicePage = () => {
                       </td>
                       <td className="p-0">
                         <div
-                          class={
+                          className={
                             index % 2 === 0
                               ? "flex items-center justify-center p-5 h-20 text-center bg-blueGray-50 border-t border-b  border-r  border-gray-100 bg-gray-50 rounded-tr-2xl rounded-br-2xl"
                               : "flex items-center justify-center p-5 h-20 text-center"

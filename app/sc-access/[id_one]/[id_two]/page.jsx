@@ -18,7 +18,7 @@ const ScAccess = async ({ params }) => {
       try {
         const loginResponse = JSON.parse(localStorage.getItem("loginResponse"));
         if (!loginResponse?._token) {
-          return router.push("/sign-in");
+          return router.push("/login");
         }
       } catch (error) {
         console.error("Error:", error.message);
