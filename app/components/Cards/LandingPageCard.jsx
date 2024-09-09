@@ -33,19 +33,19 @@ const LandingPageCard = () => {
                 Latest Questions & Answers
               </span>
               <span className="inline-block px-6 py-4 mb-3 mr-4 text-base font-bold leading-normal bg-green-400 hover:bg-green-500 text-white rounded transition duration-200">
-                Hight sucess rate
+                Hight Sucess Rate
               </span>
               <span className="inline-block px-6 py-4 mb-3 mr-4 text-base font-bold leading-normal bg-orange-400 hover:bg-orange-500 text-white rounded transition duration-200">
-                Quick availability
+                Quick Availability
               </span>
               <span className="inline-block px-6 py-4 mb-3 mr-4 text-base font-bold leading-normal bg-violet-400 hover:bg-violet-500 text-white rounded transition duration-200">
-                Instantly prepared access
+                Instantly Prepared Access
               </span>
               <span className="inline-block px-6 py-4 mb-3 mr-4 text-base font-bold leading-normal bg-red-400 hover:bg-red-500 text-white rounded transition duration-200">
                 Safe, Private, Reliable
               </span>
               <span className="inline-block px-6 py-4 mb-3 mr-4 text-base font-bold leading-normal bg-stone-400 hover:bg-stone-500 text-white rounded transition duration-200">
-                Easy to refund
+                Easy to Refund
               </span>
             </div>
           </div>
