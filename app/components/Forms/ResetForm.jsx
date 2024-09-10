@@ -119,10 +119,10 @@ const ResetForm = () => {
           <div className="max-w-sm mx-auto">
             <div className="mb-6 text-center">
               <h3 className="mb-4 text-2xl md:text-3xl font-bold">
-                Join to save progress
+                Reset Password
               </h3>
               <p className="text-lg text-coolGray-500 font-medium">
-                Start your journey with our product
+                Reset your password and continue your journey with our product
               </p>
             </div>
             <form onSubmit={handleSubmit}>

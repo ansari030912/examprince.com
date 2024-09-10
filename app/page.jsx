@@ -10,6 +10,8 @@ import { RecentUpdatedExams } from "./components/IndexPages/RecentUpdatedExams";
 
 export default function Home() {
   const randomReviewCount = Math.floor(Math.random() * (999 - 700 + 1)) + 700;
+  // const randomRatingCount = (Math.random() * (5 - 4.1) + 4.1).toFixed(1);
+  // console.log("🚀 ~ Home ~ randomRatingCount:", randomRatingCount)
   return (
     <>
       <script
@@ -64,4 +66,3 @@ export async function generateMetadata() {
     },
   };
 }
-
