@@ -70,7 +70,7 @@ const ForgotForm = () => {
         <Alert
           onClose={() => setOpenSnackbar(false)}
           severity={
-            responseMessage.includes("successful") ? "success" : "error"
+            responseMessage.includes("couple of minutes") ? "success" : "error"
           }
           variant="filled"
           sx={{ width: "100%" }}

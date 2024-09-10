@@ -39,6 +39,11 @@ const ProductPage = () => {
           <Typography variant="h4" className="mb-8 font-bold  text-5xl">
             Products
           </Typography>
+          {!data.length >= 1 && (
+            <Typography className="mb-8 font-bold text-red-500 text-center text-3xl">
+              There is not purchase products
+            </Typography>
+          )}
 
           {data.map((row, index) => (
             <Grid
