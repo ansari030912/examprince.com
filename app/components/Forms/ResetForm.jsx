@@ -64,7 +64,7 @@ const ResetForm = () => {
         {
           headers: {
             "x-api-key": X_API_Key,
-          }
+          },
         }
       );
 
@@ -172,7 +172,10 @@ const ResetForm = () => {
                 </div>
               </div>
               <div className="mb-4">
-                <label className="block mb-2 font-medium" htmlFor="confirmPassword">
+                <label
+                  className="block mb-2 font-medium"
+                  htmlFor="confirmPassword"
+                >
                   Confirm Password*
                 </label>
                 <input
@@ -215,7 +218,7 @@ const ResetForm = () => {
                 )}
               </div>
               <button className="inline-block py-3 px-7 mb-4 w-full text-base text-green-50 font-medium text-center leading-6 bg-green-500 hover:bg-green-600 focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 rounded-md shadow-sm">
-                Reset Password
+                Update Password
               </button>
 
               <p className="text-center">
