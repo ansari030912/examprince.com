@@ -55,14 +55,14 @@ const SchemaPage = ({ examData }) => {
           ratingValue: 4.4,
           reviewCount: Math.floor(Math.random() * (999 - 700 + 1)) + 700,
         },
-        offers: {
-          "@type": "Offer", // Use a valid type for offers, "Offer" is a more appropriate type
-          offerCount: examData?.exam_prices?.length, // Ensure that the offerCount defaults to 0 if no prices are available
-          lowPrice: 14.99, // This seems static as per your requirement
-          highPrice: examData?.exam_prices?.[0]?.full_price, // Safely accessing the price and defaulting to 0 if not available
-          discountOff: examData?.exam_prices?.[0]?.off, // Default to 0 if no discount is available
-          priceCurrency: "USD", // Assuming the currency is USD
-        },
+        // offers: {
+        //   "@type": "Offer", // Use a valid type for offers, "Offer" is a more appropriate type
+        //   offerCount: examData?.exam_prices?.length, // Ensure that the offerCount defaults to 0 if no prices are available
+        //   lowPrice: 14.99, // This seems static as per your requirement
+        //   highPrice: examData?.exam_prices?.[0]?.full_price, // Safely accessing the price and defaulting to 0 if not available
+        //   discountOff: examData?.exam_prices?.[0]?.off, // Default to 0 if no discount is available
+        //   priceCurrency: "USD", // Assuming the currency is USD
+        // },
       };
 
       const scriptTag = document.createElement("script");
