@@ -63,7 +63,6 @@ const SchemaPage = ({ examData }) => {
           discountOff: examData?.exam_prices?.[0]?.off, // Default to 0 if no discount is available
           priceCurrency: "USD", // Assuming the currency is USD
         },
-        s,
       };
 
       const scriptTag = document.createElement("script");
