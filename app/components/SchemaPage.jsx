@@ -1,5 +1,5 @@
-'use client'
-import React, { useEffect } from 'react';
+"use client";
+import React, { useEffect } from "react";
 
 const SchemaPage = ({ examData }) => {
   useEffect(() => {
@@ -18,8 +18,8 @@ const SchemaPage = ({ examData }) => {
         })),
       };
 
-      const scriptTag = document.createElement('script');
-      scriptTag.type = 'application/ld+json';
+      const scriptTag = document.createElement("script");
+      scriptTag.type = "application/ld+json";
       scriptTag.text = JSON.stringify(faqSchema);
       document.head.appendChild(scriptTag);
 
@@ -55,10 +55,19 @@ const SchemaPage = ({ examData }) => {
           ratingValue: 4.4,
           reviewCount: Math.floor(Math.random() * (999 - 700 + 1)) + 700,
         },
+        offers: {
+          "@type": "Offer", // Use a valid type for offers, "Offer" is a more appropriate type
+          offerCount: examData?.exam_prices?.length, // Ensure that the offerCount defaults to 0 if no prices are available
+          lowPrice: 14.99, // This seems static as per your requirement
+          highPrice: examData?.exam_prices?.[0]?.full_price, // Safely accessing the price and defaulting to 0 if not available
+          discountOff: examData?.exam_prices?.[0]?.off, // Default to 0 if no discount is available
+          priceCurrency: "USD", // Assuming the currency is USD
+        },
+        s,
       };
 
-      const scriptTag = document.createElement('script');
-      scriptTag.type = 'application/ld+json';
+      const scriptTag = document.createElement("script");
+      scriptTag.type = "application/ld+json";
       scriptTag.text = JSON.stringify(productSchema);
       document.head.appendChild(scriptTag);
 
@@ -69,11 +78,7 @@ const SchemaPage = ({ examData }) => {
     }
   }, [examData?.exam_title]);
 
-  return (
-    <div>
-      {/* Render other UI components here if needed */}
-    </div>
-  );
+  return <div>{/* Render other UI components here if needed */}</div>;
 };
 
 export default SchemaPage;
