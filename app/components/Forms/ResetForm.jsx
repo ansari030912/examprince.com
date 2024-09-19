@@ -14,7 +14,6 @@ const ResetForm = () => {
   const searchEmail = searchParams.get("email");
   const token = searchParams.get("token");
   const router = useRouter();
-
   const [open, setOpen] = useState(false);
   const [snackbarMessage, setSnackbarMessage] = useState("");
   const [snackbarSeverity, setSnackbarSeverity] = useState("success");
